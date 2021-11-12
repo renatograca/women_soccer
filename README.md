@@ -254,7 +254,73 @@ Alguns exemplos:
 
 ## Lista de Requisitos:
 
-### 1 - Descrição do requisito
+### 1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
+
+**Os seguintes pontos serão avaliados:**
+
+- Retorna todas as jogadoras de um determinado time especificado pelo `clubName` vindo da rota.
+
+```json
+{
+  "club": {
+    "id": 2,
+    "clubName": "Bahia" 
+  },
+  "players": [
+	{
+		"id": 23,
+		"name": "Anna Bia",
+		"position": "GOLEIRA",
+		"clubId": 2
+	},
+	{
+		"id" : 24,
+		"name" : "Dymenor",
+		"position" : "LATERAL",
+		"clubId" : 2
+	},
+	...
+],
+}
+```
+
+### 2 - Sua aplicação deve ter o endpoint GET `/clubs`
+
+**Os seguintes pontos serão avaliados:**
+
+- Retorna todos os times cadastrados no banco de dados.
+
+```json
+{
+  "clubs": [
+    {
+      "id" : 1,
+      "name" : "Avaí/Kindermann"
+    },
+    {
+      "id" : 2,
+      "name" : "Bahia"
+    },
+    ...
+    {
+      "id" : 15,
+      "name" : "São José-SP"
+    },
+    {
+      "id" : 16,
+      "name" : "São Paulo"
+    }
+  ]
+}
+```
+
+### 3 - Sua aplicação deve ter o endpoint POST `/match`
+
+### 4 - Sua aplicação deve ter o endpoint POST `/goal`
+
+### 5 - Sua aplicação deve ter o endpoint GET `/ranking`
+
+### 5 - Sua aplicação deve ter o endpoint GET `/scorers`
 
 ## Requisitos Bônus
 
