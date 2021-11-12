@@ -4,7 +4,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e
 
 ---
 
-# Boas vindas ao repositório do Trybe Gol!
+# Boas vindas ao repositório do [nome do projeto]!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
 
@@ -54,7 +54,7 @@ Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://
 
 ## O que deverá ser desenvolvido
 
-Você vai arquiteturar e desenvolver uma aplicação responsável pela serie A do compeonato Trybe Gol. Começando pela API, você vai desenvolver alguns endpoints (seguindo os princípios do REST) que estarão conectados ao seu banco de dados. Lembre-se de aplicar os princípios SOLID!
+Você vai arquiteturar e desenvolver uma aplicação responsável pela serie A do compeonato [nome do projeto]. Começando pela API, você vai desenvolver alguns endpoints (seguindo os princípios do REST) que estarão conectados ao seu banco de dados. Lembre-se de aplicar os princípios SOLID!
 
 O seu back-end deverá implementar diversas regras de negocio para conseguir popular adequadamente a tabela disponível no front-end que será exibida para o usuário do sistema.
 
@@ -81,9 +81,9 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com/tryber/sd-0x-project-trybe-gol.git`.
+  * `git clone https://github.com/tryber/sd-0x-project-[nome-do-projeto].git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-project-trybe-gol-api`
+    * `cd sd-0x-project-[nome-do-projeto]-api`
 
 2. Instale as dependências [**Caso existam**]
   * `npm install`
@@ -95,7 +95,7 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
     * Exemplo: `git checkout master`
   * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-sd-0x-project-trybe-gol`
+    * Exemplo: `git checkout -b joaozinho-sd-0x-project-[nome-do-projeto]`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
@@ -110,16 +110,16 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-project-trybe-gol`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-project-[nome-do-projeto]`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-trybe-gol/pulls)
+  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-trybe-gol/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
@@ -155,7 +155,7 @@ Para garantir a qualidade do código, usaremos o [ESLint](https://eslint.org/) p
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-- `sd-0x-project-trybe-gol/package.json`
+- `sd-0x-project-[nome-do-projeto]/package.json`
 
 Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
