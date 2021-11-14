@@ -1,3 +1,5 @@
+import Clubs from '../database/models/clubs';
+
 class ClubsService {
   table;
 
@@ -6,8 +8,10 @@ class ClubsService {
   }
 
   public async getAllClubs() {
-    // const club = await this.table
-    return this.table;
+    const clubs = await Clubs.findAll({ attributes: ['club_id', 'club_name'] });
+    // console.log(clubs);
+
+    return clubs;
   }
 }
 
