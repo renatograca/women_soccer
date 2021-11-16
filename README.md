@@ -493,6 +493,53 @@ Alguns exemplos:
 
 ### 6 - Sua aplicação deve ter o endpoint GET `/scorers`
 
+**Os seguintes pontos serão avaliados:**
+
+- A classificação da artilharia utilizará como parâmetro a quantidade total de gols marcados por uma jogadora;
+
+- A exibição será ordenada de forma decrescente de gols realizados;
+
+- Em caso de empate você deverá agrupar todas as jogadoras em uma mesma posição, por exemplo, todas as jogadoras com `x gols` estarão na mesma posição da tabela;
+
+- A ordenação em uma mesma posição será realizada pela ordem alfabética dos nomes.
+
+- A resposta desse endpoint deve listar a tabela de artilheiros, já ordenada:
+
+```json
+[
+  {
+    "player" : "Dandara",
+    "club" : "Palmeiras",
+    "goals" : 17
+  },
+  {
+    "player" : "Emily",
+    "club" : "Corinthians",
+    "goals" : 14
+  },
+  {
+    "player" : "Thaisinha",
+    "club" : "Santos",
+    "goals" : 11
+  },
+  {
+    "player" : "Carla Nunes",
+    "club" : "São Paulo",
+    "goals" : 11
+  },
+  {
+    "player" : "Gabizinha",
+    "club" : "Grêmio",
+    "goals" : 8
+  },
+  {
+    "player" : "Kamile",
+    "club" : "Internacional",
+    "goals" : 8
+  }
+]
+```
+
 ## Requisitos Bônus
 
 ### Requisito Bônus X - Descrição do requisito
