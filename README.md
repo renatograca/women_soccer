@@ -14,35 +14,42 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Sumário
 
+- [Boas vindas ao repositório do [nome do projeto]!](#boas-vindas-ao-repositório-do-nome-do-projeto)
+- [Sumário](#sumário)
 - [Habilidades](#habilidades)
 - [Entregáveis](#entregáveis)
   - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
   - [Desenvolvimento](#desenvolvimento)
-  - [Data de entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-  - [Execução de testes unitários](#execução-de-testes-unitários)
+    - [Data de Entrega](#data-de-entrega)
+- [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
+    - [ANTES DE COMEÇAR A DESENVOLVER:](#antes-de-começar-a-desenvolver)
+    - [DURANTE O DESENVOLVIMENTO](#durante-o-desenvolvimento)
+    - [Execução de testes unitários](#execução-de-testes-unitários)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
-- [Requisitos do projeto](#requisitos-do-projeto)
-  - [Antes de começar](#antes-de-começar)
-  - [Observações importantes](#-observações-importantes)
-    - [Dicas](#dicas)
-  - [Lista de Requisitos](#lista-de-requisitos)
-    - [1 - Descrição do requisito](#1---sua-aplicação-deve-ter-o-endpoint-post-user)
-    - [Requisitos Bônus](#requisitos-bônus)
-    - [Requisito Bônus X - Descrição do requisito](#11---sua-aplicação-deve-ter-o-endpoint-delete-postid)
+- [Requisitos do projeto:](#requisitos-do-projeto)
+  - [Antes de começar:](#antes-de-começar)
+    - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
+    - [👀 Observações importantes:](#-observações-importantes)
+    - [2 - Sua aplicação deve ter o endpoint GET `/clubs`](#2---sua-aplicação-deve-ter-o-endpoint-get-clubs)
+    - [3 - Sua aplicação deve ter o endpoint POST `/match`](#3---sua-aplicação-deve-ter-o-endpoint-post-match)
+    - [4 - Sua aplicação deve ter o endpoint POST `/goal`](#4---sua-aplicação-deve-ter-o-endpoint-post-goal)
+    - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
+    - [5 - Sua aplicação deve ter o endpoint GET `/scorers`](#5---sua-aplicação-deve-ter-o-endpoint-get-scorers)
+  - [Requisitos Bônus](#requisitos-bônus)
+    - [Requisito Bônus X - Descrição do requisito](#requisito-bônus-x---descrição-do-requisito)
+  - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
+    - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
 
 # Habilidades 
 
-Nesse projeto, você vai construir um back-end dockerizado utilizando modelagem de dados através do Sequelize. Serão criadas diversas regras de negócio além de sua aplicação irá se comunicar com um front-end. Você será capaz de:
- - Realizar a dockerização dos apps, network volume e compose;
- - Modelar dados com MySQL atravéz do Sequelize;
+Nesse projeto, você vai construir um back-end dockerizado utilizando modelagem de dados através do Sequelize. Deverão ser criadas  regras de negócio e também conectar o back-end ao front-end. Você será capaz de:
+ - Realizar a dockerização dos apps, network, volume e compose;
+ - Modelar dados com **MySQL** atravéz do **Sequelize**;
  - Criar e associar tabelas usando `models` do `sequelize`;
- - Construir uma API REST com endpoints para consumir os models que criar;
- - Fazer um `CRUD` com o `ORM`;
+ - Construir uma **API REST** com endpoints para consumir os models criados;
+ - Fazer um `CRUD` utilizando `ORM`;
 
 # Entregáveis
 
@@ -54,9 +61,9 @@ Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://
 
 ## O que deverá ser desenvolvido
 
-Você vai arquiteturar e desenvolver uma aplicação responsável pela serie A do compeonato [nome do projeto]. Começando pela API, você vai desenvolver alguns endpoints (seguindo os princípios do REST) que estarão conectados ao seu banco de dados. Lembre-se de aplicar os princípios SOLID!
+Você vai arquitetr e desenvolver uma aplicação responsável pela serie A do campeonato __[nome do projeto]__. Começando pela API, você vai desenvolver alguns endpoints (seguindo os princípios **REST**) que estarão conectados ao seu banco de dados. Lembre-se de aplicar os princípios **SOLID**!
 
-O seu back-end deverá implementar diversas regras de negocio para conseguir popular adequadamente a tabela disponível no front-end que será exibida para o usuário do sistema.
+O seu back-end deverá implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema.
 
 ---
 
