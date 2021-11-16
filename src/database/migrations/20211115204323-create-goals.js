@@ -6,11 +6,11 @@ module.exports = {
         primaryKey: true,
         default: 0,
         type: Sequelize.INTEGER,
-        references: { model: 'players', key: 'player_id' },
+        references: { model: 'players', key: 'id' },
       },
       match_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'matches', key: 'match_id' },
+        references: { model: 'matches', key: 'id' },
       },
 
     });

@@ -11,6 +11,7 @@ class ClubsRoutes {
 
   clubs() {
     this.router.get('/clubs', ClubsController.getAllClubs);
+    this.router.get('/clubs/:id', ClubsController.getOneClub);
   }
 }
 

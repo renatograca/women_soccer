@@ -8,12 +8,20 @@ class Players extends Sequelize.Model {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-  static associate() {
+  associate() {
     // define association here
+    // Players.hasMany(Clubs, {
+    //   sourceKey: 'club_id',
+    //   foreignKey: 'club_id',
+    //   as: 'clubsplayers', // this determines the name in `associations`!
+    // });
+
+    Players.belongsTo(Clubs, { foreignKey: 'club_id', as: 'playersclubs' });
+
     Clubs.hasMany(Players, {
-      sourceKey: 'player_id',
+      sourceKey: 'id',
       foreignKey: 'club_id',
-      as: 'clubs', // this determines the name in `associations`!
+      as: 'clubsplayers', // this determines the name in `associations`!
     });
   }
 }

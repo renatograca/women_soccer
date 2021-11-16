@@ -8,9 +8,16 @@ class Clubs extends Sequelize.Model {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-  static associate() {
+  public static associate() {
     // define association here
-    Players.belongsTo(Clubs, { targetKey: 'club_id' });
+    // Clubs.belongsTo(Players, { foreignKey: 'club_id', as: 'playersclubs' });
+    Clubs.belongsTo(Players, { foreignKey: 'club_id', as: 'playersclubs' });
+
+    Players.hasMany(Clubs, {
+      sourceKey: 'club_id',
+      foreignKey: 'club_id',
+      as: 'clubsplayers', // this determines the name in `associations`!
+    });
   }
 }
 Clubs.init({
@@ -20,6 +27,14 @@ Clubs.init({
   sequelize: db.connection,
   modelName: 'clubs',
   timestamps: false,
+});
+
+Clubs.belongsTo(Players, { foreignKey: 'club_id', as: 'playersclubs' });
+
+Players.hasMany(Clubs, {
+  sourceKey: 'club_id',
+  foreignKey: 'club_id',
+  as: 'clubsplayers', // this determines the name in `associations`!
 });
 
 export default Clubs;

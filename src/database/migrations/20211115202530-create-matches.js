@@ -1,19 +1,25 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('matches', {
-      match_id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      match_id: {
+        allowNull: false,
+        // autoIncrement: true,
+        // primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
       club_id_1: {
         type: Sequelize.INTEGER,
-        references: { model: 'clubs', key: 'club_id' },
+        references: { model: 'clubs', key: 'id' },
       },
       club_id_2: {
         type: Sequelize.INTEGER,
-        references: { model: 'clubs', key: 'club_id' },
+        references: { model: 'clubs', key: 'id' },
       },
       match_round: {
         type: Sequelize.INTEGER,
