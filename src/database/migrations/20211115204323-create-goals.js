@@ -9,17 +9,10 @@ module.exports = {
         references: { model: 'players', key: 'player_id' },
       },
       match_id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         references: { model: 'matches', key: 'match_id' },
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+
     });
   },
   down: async (queryInterface) => {

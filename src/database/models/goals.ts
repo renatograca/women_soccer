@@ -1,7 +1,8 @@
 import * as Sequelize from 'sequelize';
+import Matches from './matches';
 import db from '.';
 
-class goals extends Sequelize.Model {
+class Goals extends Sequelize.Model {
   /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,14 +10,18 @@ class goals extends Sequelize.Model {
      */
   static associate() {
     // define association here
+    Goals.belongsTo(Matches, {
+      foreignKey: 'match_id',
+      as: 'matches',
+    });
   }
 }
-goals.init({
-  match_id: Sequelize.NUMBER,
-  player_id: Sequelize.NUMBER,
+Goals.init({
+  match_id: Sequelize.INTEGER,
+  player_id: Sequelize.INTEGER,
 }, {
   sequelize: db.connection,
   modelName: 'goals',
   timestamps: false,
 });
-export default goals;
+export default Goals;

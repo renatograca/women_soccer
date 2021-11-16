@@ -11,6 +11,7 @@ class PlayersRoutes {
 
   Players() {
     this.router.get('/players', PlayersController.getAllPlayers);
+    this.router.get('/players/:id', PlayersController.getOnePlayer);
   }
 }
 

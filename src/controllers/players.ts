@@ -6,4 +6,11 @@ export default class PlayersController {
     const players = await PlayersService.getAllPlayers();
     return res.status(200).json(players);
   }
+
+  public static async getOnePlayer(req: Request, res: Response) {
+    const { id } = req.params;
+    const player = await PlayersService.getOnePlayer(id);
+
+    return res.status(200).json(player);
+  }
 }

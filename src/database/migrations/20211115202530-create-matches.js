@@ -8,21 +8,17 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       club_id_1: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'club_id' },
       },
       club_id_2: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'club_id' },
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
+      match_round: {
+        type: Sequelize.INTEGER,
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+
     });
   },
   down: async (queryInterface) => {

@@ -1,5 +1,6 @@
 import * as Sequelize from 'sequelize';
 import db from '.';
+import Players from './players';
 
 class Clubs extends Sequelize.Model {
   /**
@@ -9,9 +10,11 @@ class Clubs extends Sequelize.Model {
      */
   static associate() {
     // define association here
+    Players.belongsTo(Clubs, { targetKey: 'club_id' });
   }
 }
 Clubs.init({
+  club_id: Sequelize.INTEGER,
   club_name: Sequelize.STRING,
 }, {
   sequelize: db.connection,

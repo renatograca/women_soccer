@@ -1,7 +1,8 @@
 import * as Sequelize from 'sequelize';
 import db from '.';
+import Clubs from './clubs';
 
-class players extends Sequelize.Model {
+class Players extends Sequelize.Model {
   /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,15 +10,21 @@ class players extends Sequelize.Model {
      */
   static associate() {
     // define association here
+    Clubs.hasMany(Players, {
+      sourceKey: 'player_id',
+      foreignKey: 'club_id',
+      as: 'clubs', // this determines the name in `associations`!
+    });
   }
 }
-players.init({
+Players.init({
+  player_id: Sequelize.INTEGER,
   player_name: Sequelize.STRING,
-  club_id: Sequelize.NUMBER,
+  club_id: Sequelize.INTEGER,
 }, {
   sequelize: db.connection,
   modelName: 'players',
   timestamps: false,
 });
 
-export default players;
+export default Players;
