@@ -379,6 +379,38 @@ Alguns exemplos:
 
 ### 4 - Sua aplicação deve ter o endpoint POST `/goal`
 
+**Os seguintes pontos serão avaliados:**
+
+- O endpoint deve ser capaz de adicionar um novo gol a sua tabela no banco de dados;
+
+- O corpo da requisição deverá ter o seguinte formato:
+
+```json
+{
+  "matcherId": 1,
+  "playerId": "424",
+  "type": "ally"
+}
+```
+
+- A jogadora que marcar um gol deverá corresponder ao elenco de um dos times envolvidos na partida;
+
+- Caso tente-se inserir um gol de uma jogadora que não pertence a um time envolvido na partida deverá retornar o seguinte erro:
+
+```json
+{ "message": "This player cannot score a goal for these teams" }
+```
+
+- O `type` do gol poderá ser `favor` ou `own`, valores utilizados para indicar um gol a favor ou um gol contra, respectivamente.
+
+- Quando o gol for inserido com sucesso, deve-se retornar os dados do gol marcado:
+
+```json
+  "matcherId": 1,
+  "playerId": "424",
+  "type": "ally"
+```
+
 ### 5 - Sua aplicação deve ter o endpoint GET `/ranking`
 
 ### 5 - Sua aplicação deve ter o endpoint GET `/scorers`
