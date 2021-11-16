@@ -31,11 +31,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Antes de começar:](#antes-de-começar)
     - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
     - [👀 Observações importantes:](#-observações-importantes)
+    - [1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#1---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
     - [2 - Sua aplicação deve ter o endpoint GET `/clubs`](#2---sua-aplicação-deve-ter-o-endpoint-get-clubs)
     - [3 - Sua aplicação deve ter o endpoint POST `/match`](#3---sua-aplicação-deve-ter-o-endpoint-post-match)
     - [4 - Sua aplicação deve ter o endpoint POST `/goal`](#4---sua-aplicação-deve-ter-o-endpoint-post-goal)
     - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
-    - [5 - Sua aplicação deve ter o endpoint GET `/scorers`](#5---sua-aplicação-deve-ter-o-endpoint-get-scorers)
+    - [6 - Sua aplicação deve ter o endpoint GET `/scorers`](#6---sua-aplicação-deve-ter-o-endpoint-get-scorers)
   - [Requisitos Bônus](#requisitos-bônus)
     - [Requisito Bônus X - Descrição do requisito](#requisito-bônus-x---descrição-do-requisito)
   - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
@@ -490,7 +491,7 @@ Alguns exemplos:
   
   Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
-### 5 - Sua aplicação deve ter o endpoint GET `/scorers`
+### 6 - Sua aplicação deve ter o endpoint GET `/scorers`
 
 ## Requisitos Bônus
 
