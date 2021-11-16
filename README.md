@@ -389,7 +389,7 @@ Alguns exemplos:
 {
   "matcherId": 1,
   "playerId": "424",
-  "type": "ally"
+  "type": "favor"
 }
 ```
 
@@ -412,6 +412,83 @@ Alguns exemplos:
 ```
 
 ### 5 - Sua aplicação deve ter o endpoint GET `/ranking`
+
+**Os seguintes pontos serão avaliados:**
+
+- Esse endpoint irá alimentar, no front-end, uma tabela idêntica ao exemplo abaixo:
+
+  | Classificação | P  | J  | V  | E | D | GP | GC | SG | %    |
+  |---------------|----|----|----|---|---|----|----|----|------|
+  | Corinthians   | 38 | 15 | 12 | 2 | 1 | 44 | 13 | 31 | 84.4 |
+  
+  Onde:
+   - `Classificação`: Nome do time;
+   - `P`: Total de Pontos;
+   - `J`: Total de Jogos;
+   - `V`: Total de Vitórias;
+   - `E`: Total de Empates;
+   - `D`: Total de Derrotas;
+   - `GP`: Gols marcados a favor;
+   - `GC`: Gols marcados contra;
+   - `SG`: Saldo total de gols;
+   - `%`: Aproveitamento do time.
+
+- Toda a regra de negócio e cálculos necessários deverão ser realizados no seu back-end. A aplicação front-end apenas renderizará essas informações;
+
+- Para calcular o `Total de Pontos`, você deve levar em consideração que:
+
+  - O time `vitorioso`: marcará +3 pontos;
+  - O time `perdedor`: marcará 0 pontos;
+  - Em caso de `empate`: ambos os times marcam +1 ponto.
+
+- O campo referente ao `Aproveitamento do time` obtêm o percentual através da seguinte fórmula: `P/(Jx3)*100`, onde:
+  
+  - `P`: Total de Pontos;
+  - `J`: Total de Jogos.
+
+  Obs.: O seu resultado deverá ser limitado a `uma casa decimal`.
+  
+- O resultado deverá ser ordenado, sempre de forma decrescente, levando em consideração a quantidade de pontos que o time acumulou. Em caso de empate no `Total de Pontos` você deve levar em consieração:
+  
+  - Total de Vitórias;
+  - Saldo total de gols;
+  - Gols marcados a favor;
+  - Gols marcados contra.
+
+- A resposta desse endpoint deve listar a tabela de classificação, constando todos os times já ordenados:
+
+  ```json
+  [
+    {
+      "name": "Corinthians",
+      "TotalPoints": 38,
+      "TotalGames": 15,
+      "TotalVictories": 12,
+      "TotalDraws": 2,
+      "TotalLooses": 1,
+      "GoalsFavor": 44,
+      "GoalsOwn": 13,
+      "GoalsBalance": 31,
+      "Efficiency": 84.4
+    },
+    {
+      "name": "Palmeiras",
+      "TotalPoints": 37,
+      "TotalGames": 15,
+      "TotalVictories": 11,
+      "TotalDraws": 4,
+      "TotalLooses": 0,
+      "GoalsFavor": 45,
+      "GoalsOwn": 13,
+      "GoalsBalance": 32,
+      "Efficiency": 82.2,
+    },
+    ...
+  ]
+  ```
+  ⚠️ **Atenção:** ⚠️
+  
+  Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
 ### 5 - Sua aplicação deve ter o endpoint GET `/scorers`
 
