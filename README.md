@@ -269,25 +269,25 @@ Alguns exemplos:
 
 ```json
 {
-  "club": {
-    "id": 2,
-    "clubName": "Bahia" 
-  },
-  "players": [
-	{
-		"id": 23,
-		"name": "Anna Bia",
-		"position": "GOLEIRA",
-		"clubId": 2
+	"club": {
+		"id": 2,
+		"clubName": "Bahia" 
 	},
-	{
-		"id" : 24,
-		"name" : "Dymenor",
-		"position" : "LATERAL",
-		"clubId" : 2
-	},
-	...
-],
+	"players": [
+		{
+			"id": 23,
+			"name": "Anna Bia",
+			"position": "GOLEIRA",
+			"clubId": 2
+		},
+		{
+			"id" : 24,
+			"name" : "Dymenor",
+			"position" : "LATERAL",
+			"clubId" : 2
+		},
+		...
+	],
 }
 ```
 
@@ -322,6 +322,60 @@ Alguns exemplos:
 ```
 
 ### 3 - Sua aplicação deve ter o endpoint POST `/match`
+
+**Os seguintes pontos serão avaliados:**
+
+- O endpoint deve ser capaz de adicionar uma nova partida a sua tabela no banco de dados;
+
+- O corpo da requisição deverá ter o seguinte formato:
+
+```json
+{
+	"homeTeam": {
+		"id": 16
+	},
+	"visitingTeam": {
+		"id": 8
+	}
+}
+```
+- o campo `homeTeam` e `visitingTeam` precisam ser um objeto com a propriedade `id`;
+
+- o campo `id` precisa ser um número. Esse campo é obrigatório;
+
+- caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar o seguinte erro:
+
+```json
+{ "message": "Team not found" }
+```
+
+- é necessário ter somente um mandante por partida, caso contrário, deve-se retornar o seguinte erro:
+
+```json
+{ "message": "Can not possible to create a match with two home teams" }
+```
+
+- é necessário ter somente um visitante por partida, caso contrário, deve-se retornar o seguinte erro:
+
+```json
+{ "message": "Can not possible to create a match with two visiting teams" }
+```
+
+- caso a partida seja inserida com sucesso, deve-se retornar os dados da partida:
+
+```json
+{
+	"matchId": 1,
+	"homeTeam": {
+		"id": 16,
+		"name": "São Paulo"
+	},
+	"visitingTeam": {
+		"id": 8,
+		"name": "Grêmio"
+	}
+}
+```
 
 ### 4 - Sua aplicação deve ter o endpoint POST `/goal`
 
