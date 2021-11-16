@@ -269,25 +269,25 @@ Alguns exemplos:
 
 ```json
 {
-	"club": {
-		"id": 2,
-		"clubName": "Bahia" 
-	},
-	"players": [
-		{
-			"id": 23,
-			"name": "Anna Bia",
-			"position": "GOLEIRA",
-			"clubId": 2
-		},
-		{
-			"id" : 24,
-			"name" : "Dymenor",
-			"position" : "LATERAL",
-			"clubId" : 2
-		},
-		...
-	],
+  "club": {
+    "id": 2,
+    "clubName": "Bahia" 
+  },
+  "players": [
+    {
+      "id": 23,
+      "name": "Anna Bia",
+      "position": "GOLEIRA",
+      "clubId": 2
+    },
+    {
+      "id" : 24,
+      "name" : "Dymenor",
+      "position" : "LATERAL",
+      "clubId" : 2
+    },
+    ...
+  ],
 }
 ```
 
@@ -331,12 +331,12 @@ Alguns exemplos:
 
 ```json
 {
-	"homeTeam": {
-		"id": 16
-	},
-	"visitingTeam": {
-		"id": 8
-	}
+  "homeTeam": {
+    "id": 16
+  },
+  "visitingTeam": {
+    "id": 8
+  }
 }
 ```
 - o campo `homeTeam` e `visitingTeam` precisam ser um objeto com a propriedade `id`;
@@ -365,15 +365,15 @@ Alguns exemplos:
 
 ```json
 {
-	"matchId": 1,
-	"homeTeam": {
-		"id": 16,
-		"name": "São Paulo"
-	},
-	"visitingTeam": {
-		"id": 8,
-		"name": "Grêmio"
-	}
+  "matchId": 1,
+  "homeTeam": {
+    "id": 16,
+    "name": "São Paulo"
+  },
+  "visitingTeam": {
+    "id": 8,
+    "name": "Grêmio"
+  }
 }
 ```
 
