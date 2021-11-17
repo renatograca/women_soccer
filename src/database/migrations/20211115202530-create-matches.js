@@ -7,12 +7,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      match_id: {
-        allowNull: false,
-        // autoIncrement: true,
-        // primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       club_id_1: {
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
@@ -21,10 +15,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
       },
-      match_round: {
-        type: Sequelize.INTEGER,
-      },
-
     });
   },
   down: async (queryInterface) => {

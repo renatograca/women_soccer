@@ -1,8 +1,22 @@
+import Clubs from '../database/models/clubs';
+import Matches from '../database/models/matches';
 import Goals from '../database/models/goals';
+import Players from '../database/models/players';
 
 class GoalsService {
   async getAllGoals() {
-    const goals = await Goals.findAll({ attributes: ['player_id', 'match_round'] });
+    const goals = await Goals.findAll({
+      attributes: { exclude: ['id'] },
+      include: [
+        {
+          model: Players,
+          as: 'player',
+          include: [{ model: Clubs, as: 'club' }],
+          attributes: ['player_name'],
+        },
+        { model: Matches, as: 'match', attributes: { exclude: ['id'] } },
+      ],
+    });
     return goals;
   }
 }

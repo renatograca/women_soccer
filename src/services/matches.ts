@@ -2,7 +2,7 @@ import Matches from '../database/models/matches';
 
 class MatchesService {
   async getAllMatches() {
-    const matches = await Matches.findAll({ attributes: ['match_id', 'club_id_1', 'club_id_2', 'match_round'] });
+    const matches = await Matches.findAll({ attributes: { exclude: ['id'] } });
     return matches;
   }
 }

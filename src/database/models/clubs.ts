@@ -5,7 +5,6 @@ import db from '.';
 class Clubs extends Sequelize.Model {}
 
 Clubs.init({
-  club_id: Sequelize.INTEGER,
   club_name: Sequelize.STRING,
 }, {
   sequelize: db.connection,

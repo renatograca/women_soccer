@@ -7,12 +7,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      club_id: {
-        allowNull: false,
-        // autoIncrement: true,
-        // primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       club_name: {
         type: Sequelize.STRING,
       },

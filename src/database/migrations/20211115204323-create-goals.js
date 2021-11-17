@@ -1,10 +1,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('goals', {
-      player_id: {
+      id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        default: 0,
+        type: Sequelize.INTEGER,
+      },
+      player_id: {
         type: Sequelize.INTEGER,
         references: { model: 'players', key: 'id' },
       },
@@ -12,7 +15,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'matches', key: 'id' },
       },
-
+      goal_way: {
+        type: Sequelize.STRING,
+      },
     });
   },
   down: async (queryInterface) => {
