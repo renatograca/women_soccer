@@ -14,33 +14,33 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Sumário
 
-- [Boas vindas ao repositório do TFC - Trybe Futebol Clube!](#boas-vindas-ao-repositório-do-tfc---trybe-futebol-clube)
-- [Sumário](#sumário)
 - [Habilidades](#habilidades)
 - [Entregáveis](#entregáveis)
   - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
   - [Desenvolvimento](#desenvolvimento)
-    - [Data de Entrega](#data-de-entrega)
+  - [Data de Entrega](#data-de-entrega)
 - [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
-    - [ANTES DE COMEÇAR A DESENVOLVER:](#antes-de-começar-a-desenvolver)
-    - [DURANTE O DESENVOLVIMENTO](#durante-o-desenvolvimento)
+    - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+    - [Durante o desenvolvimento](#durante-o-desenvolvimento)
     - [Execução de testes unitários](#execução-de-testes-unitários)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
 - [Requisitos do projeto:](#requisitos-do-projeto)
   - [Antes de começar:](#antes-de-começar)
-    - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
-    - [👀 Observações importantes:](#-observações-importantes)
-    - [1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#1---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
-    - [2 - Sua aplicação deve ter o endpoint GET `/clubs`](#2---sua-aplicação-deve-ter-o-endpoint-get-clubs)
-    - [3 - Sua aplicação deve ter o endpoint POST `/match`](#3---sua-aplicação-deve-ter-o-endpoint-post-match)
-    - [4 - Sua aplicação deve ter o endpoint POST `/goal`](#4---sua-aplicação-deve-ter-o-endpoint-post-goal)
-    - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
-    - [6 - Sua aplicação deve ter o endpoint GET `/scorers`](#6---sua-aplicação-deve-ter-o-endpoint-get-scorers)
-  - [Requisitos Bônus](#requisitos-bônus)
-    - [Requisito Bônus X - Descrição do requisito](#requisito-bônus-x---descrição-do-requisito)
-  - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
-    - [Revisando um pull request](#revisando-um-pull-request)
+  - [Dicas:](#dicas)
+  - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
+  - [👀 Observações importantes:](#-observações-importantes)
+    - [Backend](#backend)
+      - [1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#1---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
+      - [2 - Sua aplicação deve ter o endpoint GET `/clubs`](#2---sua-aplicação-deve-ter-o-endpoint-get-clubs)
+      - [3 - Sua aplicação deve ter o endpoint POST `/match`](#3---sua-aplicação-deve-ter-o-endpoint-post-match)
+      - [4 - Sua aplicação deve ter o endpoint POST `/goal`](#4---sua-aplicação-deve-ter-o-endpoint-post-goal)
+      - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
+      - [6 - Sua aplicação deve ter o endpoint GET `/scorers`](#6---sua-aplicação-deve-ter-o-endpoint-get-scorers)
+    - [Frontend](#frontend)
+      - [Requisito Frontend X - Descrição do requisito](#requisito-frontend-x---descrição-do-requisito)
+- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
+  - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
 
 # Habilidades 
@@ -86,7 +86,7 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 
 # Instruções para entregar seu projeto:
 
-### ANTES DE COMEÇAR A DESENVOLVER:
+### Antes de começar a desenvolver
 
 1. Clone o repositório
   * `git clone https://github.com/tryber/sd-0x-project-[nome-do-projeto].git`.
@@ -131,7 +131,7 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 
 ---
 
-### DURANTE O DESENVOLVIMENTO
+### Durante o desenvolvimento
 
 * Faça `commits` das alterações que você fizer no código regularmente
 
@@ -261,6 +261,8 @@ Alguns exemplos:
 ---
 
 ## Lista de Requisitos:
+
+## Backend
 
 ### 1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
 
@@ -540,9 +542,9 @@ Alguns exemplos:
 ]
 ```
 
-## Requisitos Bônus
+## Frontend
 
-### Requisito Bônus X - Descrição do requisito
+### Requisito FrontEnd X - Descrição do requisito
 
 --- 
 
