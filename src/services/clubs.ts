@@ -9,17 +9,15 @@ class ClubsService {
   }
 
   public async getAllClubs() {
-    const clubs = await Clubs.findAll({ attributes: ['club_id', 'club_name'] });
+    const clubs = await Clubs.findAll();
 
     return clubs;
   }
 
   async getOneClub(id: number): Promise<any> {
     try {
-      const club = await Clubs.findAll({
-        where: { club_id: id },
-        attributes: { exclude: ['id'] },
-        include: [{ all: true, attributes: { exclude: ['id'] } }],
+      const club = await Clubs.findOne({
+        where: { id },
       });
 
       return club;
