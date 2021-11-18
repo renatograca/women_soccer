@@ -1,7 +1,9 @@
+import Leaderboard from "./components/Leaderboard";
+
 function App() {
   return (
     <div>
-      Hello World!
+      <Leaderboard />
     </div>
   );
 }
