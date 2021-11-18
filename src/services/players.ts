@@ -3,7 +3,9 @@ import Players from '../database/models/players';
 
 class PlayersService {
   async getAllPlayers() {
-    const players = await Players.findAll();
+    const players = await Players.findAll({
+      attributes: { exclude: ['id'] },
+    });
     return players;
   }
 

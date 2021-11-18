@@ -9,7 +9,9 @@ class ClubsService {
   }
 
   public async getAllClubs() {
-    const clubs = await Clubs.findAll();
+    const clubs = await Clubs.findAll({
+      attributes: { exclude: ['id'] },
+    });
 
     return clubs;
   }

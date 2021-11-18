@@ -1,12 +1,14 @@
-import * as Sequelize from 'sequelize';
+import { Model, STRING, INTEGER } from 'sequelize';
 import db from '.';
 import Clubs from './clubs';
 
-class Players extends Sequelize.Model {}
+class Players extends Model {}
 
 Players.init({
-  player_name: Sequelize.STRING,
-  club_id: Sequelize.INTEGER,
+  player_name: STRING,
+  position: STRING,
+  club_id: INTEGER,
+  goals: INTEGER,
 }, {
   sequelize: db.connection,
   modelName: 'players',
