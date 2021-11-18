@@ -1,12 +1,8 @@
-// import * as Sequelize from 'sequelize';
-// import Clubs from '../database/models/clubs';
 import Matches from '../database/models/matches';
 
 class MatchesService {
   async getAllMatches() {
-    const matches = await Matches.findAll({
-      attributes: { exclude: ['id'] },
-    });
+    const matches = await Matches.findAll();
     return matches;
   }
 

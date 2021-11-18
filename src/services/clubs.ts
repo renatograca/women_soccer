@@ -1,4 +1,3 @@
-// import Players from '../database/models/players';
 import Clubs from '../database/models/clubs';
 
 class ClubsService {
@@ -9,9 +8,7 @@ class ClubsService {
   }
 
   public async getAllClubs() {
-    const clubs = await Clubs.findAll({
-      attributes: { exclude: ['id'] },
-    });
+    const clubs = await Clubs.findAll();
 
     return clubs;
   }
