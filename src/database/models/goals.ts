@@ -14,24 +14,38 @@ Goals.init({
   timestamps: false,
 });
 
-Goals.belongsTo(Matches, {
+// Goals.belongsTo(Matches, {
+//   foreignKey: 'match_id',
+//   as: 'match',
+// });
+// Matches.hasMany(Goals, {
+//   sourceKey: 'id',
+//   foreignKey: 'id',
+//   as: 'match',
+// });
+
+// Goals.belongsTo(Players, {
+//   foreignKey: 'player_id',
+//   as: 'player',
+// });
+// Players.hasMany(Goals, {
+//   sourceKey: 'id',
+//   foreignKey: 'player_id',
+//   as: 'player',
+// });
+
+Matches.belongsToMany(Players, {
+  as: 'players',
+  through: Goals,
   foreignKey: 'match_id',
-  as: 'match',
-});
-Matches.hasMany(Goals, {
-  sourceKey: 'id',
-  foreignKey: 'id',
-  as: 'match',
+  otherKey: 'player_id',
 });
 
-Goals.belongsTo(Players, {
+Players.belongsToMany(Matches, {
+  as: 'matches',
+  through: Goals,
   foreignKey: 'player_id',
-  as: 'player',
-});
-Players.hasMany(Goals, {
-  sourceKey: 'id',
-  foreignKey: 'player_id',
-  as: 'player',
+  otherKey: 'match_id',
 });
 
 export default Goals;

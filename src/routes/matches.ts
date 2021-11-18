@@ -11,6 +11,7 @@ class MatchesRoutes {
 
   getAllMetches() {
     this.router.get('/matches', MathcesController.getAllMetches);
+    this.router.get('/matches/:id', MathcesController.getOneMatch);
   }
 }
 

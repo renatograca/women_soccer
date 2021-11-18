@@ -22,8 +22,6 @@ class ClubsService {
 
       return club;
     } catch (error) {
-      console.log(error);
-
       return error;
     }
   }
