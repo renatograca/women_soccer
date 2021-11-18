@@ -38,7 +38,8 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
       - [6 - Sua aplicação deve ter o endpoint GET `/scorers`](#6---sua-aplicação-deve-ter-o-endpoint-get-scorers)
     - [Frontend](#frontend)
-      - [Requisito Frontend X - Descrição do requisito](#requisito-frontend-x---descrição-do-requisito)
+      - [7 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados](#7---faça-uma-requisição-para-o-endpoint-ranking-e-preencha-uma-tabela-com-os-dados-retornados)
+      - [8 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados](#8---faça-uma-requisição-para-o-endpoint-scorers-e-preencha-uma-tabela-com-os-dados-retornados)
 - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
   - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
@@ -544,7 +545,29 @@ Alguns exemplos:
 
 ## Frontend
 
-### Requisito FrontEnd X - Descrição do requisito
+### 7 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados
+
+A tabela de classificação deve ter uma primeira linha com os headers `Classificação`, `P`, `J`, `V`, `E`, `D`, `GP`, `GC`, `SG`, `%` e as demais linhas do corpo com as respectivas informações dos times.
+
+**Os seguintes pontos serão avaliados:**
+
+```
+- Preenche a tabela com os dados retornados
+- Verifica se a tabela de classificação tem 10 colunas
+- Verifica se a tabela tem uma linha para cada time
+```
+
+### 8 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados
+
+A tabela de artilharia deve ter uma primeira linha com os headers `Ranking`, `Jogador`, `Clube`, `Gols`, e as demais linhas do corpo com as respectivas informações das artilheiras.
+
+**Os seguintes pontos serão avaliados:**
+
+```
+- Preenche a tabela com os dados retornados
+- Verifica se a tabela de artilharia tem 4 colunas
+- Verifica se as artilheiras estão agrupadas corretamente de acordo com os gols realizados
+```
 
 --- 
 
