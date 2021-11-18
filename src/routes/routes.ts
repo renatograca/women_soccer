@@ -1,7 +1,7 @@
 import { Application } from 'express';
-import ClubsRoutes from './clubsRoutes';
-import PlayerRoutes from './playersRoutes';
-import MatchesRoutes from './matchesRoutes';
+import ClubsRoutes from './ClubsRoutes';
+import PlayerRoutes from './PlayersRoutes';
+import MatchesRoutes from './MatchesRoutes';
 
 class Routes {
   public routes(app: Application):void {
