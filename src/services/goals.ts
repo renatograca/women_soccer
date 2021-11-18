@@ -17,6 +17,7 @@ class GoalsService {
       //   { model: Matches, as: 'match', attributes: { exclude: ['id'] } },
       // ],
     });
+
     return goals;
   }
 }
