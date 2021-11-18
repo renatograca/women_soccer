@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import MatchesService from '../services/matches';
+import MatchesService from '../services/MatchesService';
 
 class MatchesController {
   public static async getAllMetches(req: Request, res: Response) {

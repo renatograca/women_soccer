@@ -1,16 +1,16 @@
-import * as Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize';
 
 const databaseConfig = require('../config/database');
 
 class Database {
-  public connection: Sequelize.Sequelize;
+  public connection: Sequelize;
 
   constructor() {
     this.init();
   }
 
   init(): void {
-    this.connection = new Sequelize.Sequelize(databaseConfig);
+    this.connection = new Sequelize(databaseConfig);
   }
 }
 
