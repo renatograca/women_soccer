@@ -511,34 +511,40 @@ Alguns exemplos:
 ```json
 [
   {
-    "player" : "Dandara",
-    "club" : "Palmeiras",
-    "goals" : 17
-  },
-  {
-    "player" : "Emily",
-    "club" : "Corinthians",
-    "goals" : 14
-  },
-  {
-    "player" : "Thaisinha",
+    "player" : "Cristiane",
     "club" : "Santos",
-    "goals" : 11
+    "goals" : 5
   },
   {
-    "player" : "Carla Nunes",
-    "club" : "São Paulo",
-    "goals" : 11
+    "player" : "Mariana Alves",
+    "club" : "Palmeiras",
+    "goals" : 5
   },
   {
-    "player" : "Gabizinha",
-    "club" : "Grêmio",
-    "goals" : 8
+    "player" : "Cacau",
+    "club" : "Corinthians",
+    "goals" : 5
   },
   {
-    "player" : "Kamile",
-    "club" : "Internacional",
-    "goals" : 8
+    "player" : "Carol Baiana",
+    "club" : "Palmeiras",
+    "goals" : 4
+  },
+  {
+    "player" : "Thayná",
+    "club" : "Palmeiras",
+    "goals" : 4
+  },
+  ...
+  {
+    "player" : "Gabi Zanotti",
+    "club" : "Corinthians",
+    "goals" : 1
+  },
+  {
+    "player" : "Diany",
+    "club" : "Corinthians",
+    "goals" : 1
   }
 ]
 ```
