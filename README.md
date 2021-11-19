@@ -31,15 +31,16 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
   - [👀 Observações importantes:](#-observações-importantes)
     - [Backend](#backend)
-      - [1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#1---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
-      - [2 - Sua aplicação deve ter o endpoint GET `/clubs`](#2---sua-aplicação-deve-ter-o-endpoint-get-clubs)
-      - [3 - Sua aplicação deve ter o endpoint POST `/match`](#3---sua-aplicação-deve-ter-o-endpoint-post-match)
-      - [4 - Sua aplicação deve ter o endpoint POST `/goal`](#4---sua-aplicação-deve-ter-o-endpoint-post-goal)
-      - [5 - Sua aplicação deve ter o endpoint GET `/ranking`](#5---sua-aplicação-deve-ter-o-endpoint-get-ranking)
-      - [6 - Sua aplicação deve ter o endpoint GET `/scorers`](#6---sua-aplicação-deve-ter-o-endpoint-get-scorers)
+      - [1 - Crie um endpoint para o login de usuários](#1---crie-um-endpoint-para-o-login-de-usuários)
+      - [2 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#2---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
+      - [3 - Sua aplicação deve ter o endpoint GET `/clubs`](#3---sua-aplicação-deve-ter-o-endpoint-get-clubs)
+      - [4 - Sua aplicação deve ter o endpoint POST `/match`](#4---sua-aplicação-deve-ter-o-endpoint-post-match)
+      - [5 - Sua aplicação deve ter o endpoint POST `/goal`](#5---sua-aplicação-deve-ter-o-endpoint-post-goal)
+      - [6 - Sua aplicação deve ter o endpoint GET `/ranking`](#6---sua-aplicação-deve-ter-o-endpoint-get-ranking)
+      - [7 - Sua aplicação deve ter o endpoint GET `/scorers`](#7---sua-aplicação-deve-ter-o-endpoint-get-scorers)
     - [Frontend](#frontend)
-      - [7 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados](#7---faça-uma-requisição-para-o-endpoint-ranking-e-preencha-uma-tabela-com-os-dados-retornados)
-      - [8 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados](#8---faça-uma-requisição-para-o-endpoint-scorers-e-preencha-uma-tabela-com-os-dados-retornados)
+      - [8 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados](#8---faça-uma-requisição-para-o-endpoint-ranking-e-preencha-uma-tabela-com-os-dados-retornados)
+      - [9 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados](#9---faça-uma-requisição-para-o-endpoint-scorers-e-preencha-uma-tabela-com-os-dados-retornados)
 - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
   - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
@@ -265,7 +266,26 @@ Alguns exemplos:
 
 ## Backend
 
-### 1 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
+### 1 - Crie um endpoint para o login de usuários
+
+- A rota deve ser (`/login`).
+
+- A rota deve receber os campos `Email` e `Senha` e esses campos devem ser validados no banco de dados.
+
+- Na configuração do `JWT` **não use variáveis de ambientes** para não ter conflito com o avaliador.
+
+- Um token `JWT` deve ser gerado e retornado caso haja sucesso no login. No seu payload deve estar presente o id, email e role do usuário.
+
+- O body da requisição deve conter o seguinte formato:
+
+  ```
+  {
+    "email": "string",
+    "password": "string"
+  }
+  ```
+
+### 2 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -295,7 +315,7 @@ Alguns exemplos:
 }
 ```
 
-### 2 - Sua aplicação deve ter o endpoint GET `/clubs`
+### 3 - Sua aplicação deve ter o endpoint GET `/clubs`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -325,7 +345,7 @@ Alguns exemplos:
 }
 ```
 
-### 3 - Sua aplicação deve ter o endpoint POST `/match`
+### 4 - Sua aplicação deve ter o endpoint POST `/match`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -381,7 +401,7 @@ Alguns exemplos:
 }
 ```
 
-### 4 - Sua aplicação deve ter o endpoint POST `/goal`
+### 5 - Sua aplicação deve ter o endpoint POST `/goal`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -415,7 +435,7 @@ Alguns exemplos:
   "type": "ally"
 ```
 
-### 5 - Sua aplicação deve ter o endpoint GET `/ranking`
+### 6 - Sua aplicação deve ter o endpoint GET `/ranking`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -494,7 +514,7 @@ Alguns exemplos:
   
   Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
-### 6 - Sua aplicação deve ter o endpoint GET `/scorers`
+### 7 - Sua aplicação deve ter o endpoint GET `/scorers`
 
 **Os seguintes pontos serão avaliados:**
 
@@ -551,7 +571,7 @@ Alguns exemplos:
 
 ## Frontend
 
-### 7 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados
+### 8 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados
 
 A tabela de classificação deve ter uma primeira linha com os headers `Classificação`, `P`, `J`, `V`, `E`, `D`, `GP`, `GC`, `SG`, `%` e as demais linhas do corpo com as respectivas informações dos times.
 
@@ -563,7 +583,7 @@ A tabela de classificação deve ter uma primeira linha com os headers `Classifi
 - Verifica se a tabela tem uma linha para cada time
 ```
 
-### 8 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados
+### 9 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados
 
 A tabela de artilharia deve ter uma primeira linha com os headers `Ranking`, `Jogador`, `Clube`, `Gols`, e as demais linhas do corpo com as respectivas informações das artilheiras.
 
