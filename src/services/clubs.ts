@@ -1,4 +1,3 @@
-// import Players from '../database/models/players';
 import Clubs from '../database/models/clubs';
 
 class ClubsService {

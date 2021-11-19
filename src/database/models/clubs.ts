@@ -1,6 +1,5 @@
 import { Model, STRING } from 'sequelize';
 import db from '.';
-// import Players from './players';
 
 class Clubs extends Model {}
 
