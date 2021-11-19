@@ -1,3 +1,4 @@
+import { hashSync } from 'bcryptjs';
 import { Request, Response } from 'express';
 import UserService from '../services/UserService';
 
@@ -14,6 +15,7 @@ class UserController {
       email,
       password,
     } = req.body;
+    hashSync(password, 8);
     const user = await UserService.createUser(username, role, email, password);
     return res.status(200).json(user);
   }
