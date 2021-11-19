@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/services/clubs.ts
-import Clubs from '../database/models/clubs';
-=======
 import Clubs from '../database/models/ClubsModel';
->>>>>>> 72d14c6972d90205829630644485898bb815623b:src/services/ClubsService.ts
 
 class ClubsService {
   table;

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import MatchesService from '../services/MatchesService';
+import ResultService from '../services/ResultService';
 
 class MatchesController {
   public static async getAllMetches(req: Request, res: Response) {
@@ -11,6 +12,11 @@ class MatchesController {
     const { id } = req.params;
     const match = await MatchesService.getOneMatch(Number(id));
     return res.status(200).json(match);
+  }
+
+  public static async result(req: Request, res: Response) {
+    const matches = await ResultService.result();
+    return res.status(200).json(matches);
   }
 }
 
