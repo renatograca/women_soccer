@@ -11,9 +11,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
       },
+      club_1_goals: {
+        type: Sequelize.INTEGER,
+      },
       club_id_2: {
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
+      },
+      club_2_goals: {
+        type: Sequelize.INTEGER,
       },
     });
   },

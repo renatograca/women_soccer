@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ClubsService from '../services/clubs';
+import ClubsService from '../services/ClubsService';
 
 export default class ClubsController {
   public static async getAllClubs(req: Request, res: Response) {
