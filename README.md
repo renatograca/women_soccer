@@ -285,6 +285,23 @@ Alguns exemplos:
   }
   ```
 
+**Os seguintes pontos serão avaliados:**
+
+- Será validado que o campo "email" é obrigatório:
+
+  Se o login não tiver o campo "email" o resultado retornado deverá retornar a mensagem abaixo, com um status http `401`:
+  ```json
+    "message": "All fields must be filled"
+  ```
+  
+- Será validado que o campo "password" é obrigatório:
+
+- Será validado que não é possível fazer login com um email inválido:
+
+- Será validado que não é possível fazer login com uma senha inválida:
+
+- Será validado que é possível fazer login com sucesso:
+
 ### 2 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
 
 **Os seguintes pontos serão avaliados:**
