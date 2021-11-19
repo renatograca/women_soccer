@@ -8,6 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       club_name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
     });

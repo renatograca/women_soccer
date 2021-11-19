@@ -9,6 +9,7 @@ Users.init({
   email: STRING,
   password: STRING,
 }, {
+  timestamps: false,
   sequelize: db.connection,
   modelName: 'users',
 });

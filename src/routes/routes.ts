@@ -3,6 +3,7 @@ import ClubsRoutes from './ClubsRoutes';
 import PlayerRoutes from './PlayersRoutes';
 import MatchesRoutes from './MatchesRoutes';
 import UsersRoutes from './UsersRoutes';
+import AuthRoutes from './AuthRoutes';
 
 class Routes {
   public routes(app: Application):void {
@@ -11,6 +12,7 @@ class Routes {
     app.use('/', PlayerRoutes);
     app.use('/', MatchesRoutes);
     app.use('/', UsersRoutes);
+    app.use('/', AuthRoutes);
   }
 }
 

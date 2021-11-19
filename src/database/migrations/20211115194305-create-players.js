@@ -8,9 +8,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       player_name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       position: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       club_id: {
@@ -19,6 +21,7 @@ module.exports = {
         references: { model: 'clubs', key: 'id' },
       },
       goals: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
     });
