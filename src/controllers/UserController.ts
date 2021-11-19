@@ -14,13 +14,7 @@ class UserController {
       email,
       password,
     } = req.body;
-    const userExists = await UserService.getOneUser(String(email));
-
-    if (userExists) {
-      return res.sendStatus(409);
-    }
-
-    const user = UserService.createUser(username, role, email, password);
+    const user = await UserService.createUser(username, role, email, password);
     return res.status(200).json(user);
   }
 }
