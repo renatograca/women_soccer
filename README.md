@@ -32,12 +32,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [👀 Observações importantes:](#-observações-importantes)
     - [Backend](#backend)
       - [1 - Crie um endpoint para o login de usuários](#1---crie-um-endpoint-para-o-login-de-usuários)
-      - [2 - Sua aplicação deve ter o endpoint GET `/player/:clubName`](#2---sua-aplicação-deve-ter-o-endpoint-get-playerclubname)
-      - [3 - Sua aplicação deve ter o endpoint GET `/clubs`](#3---sua-aplicação-deve-ter-o-endpoint-get-clubs)
-      - [4 - Sua aplicação deve ter o endpoint POST `/match`](#4---sua-aplicação-deve-ter-o-endpoint-post-match)
-      - [5 - Sua aplicação deve ter o endpoint POST `/goal`](#5---sua-aplicação-deve-ter-o-endpoint-post-goal)
-      - [6 - Sua aplicação deve ter o endpoint GET `/ranking`](#6---sua-aplicação-deve-ter-o-endpoint-get-ranking)
-      - [7 - Sua aplicação deve ter o endpoint GET `/scorers`](#7---sua-aplicação-deve-ter-o-endpoint-get-scorers)
+      - [2 - Crie um endpoint para listar as jogadoras de um clube em específico](#2---crie-um-endpoint-para-listar-as-jogadoras-de-um-clube-em-específico)
+      - [3 - Crie um endpoint para listar todos os clubes cadastrados](#3---crie-um-endpoint-para-listar-todos-os-clubes-cadastrados)
+      - [4 - Crie um endpoint para o cadastro de novas partidas](#4---crie-um-endpoint-para-o-cadastro-de-novas-partidas)
+      - [5 - Crie um endpoint para o cadastro de novos gols](#5---crie-um-endpoint-para-o-cadastro-de-novos-gols)
+      - [6 - Crie um endpoint para retornar a tabela do campeonato](#6---crie-um-endpoint-para-retornar-a-tabela-do-campeonato)
+      - [7 - Crie um endpoint para retornar a tabela do artilheiras](#7---crie-um-endpoint-para-retornar-a-tabela-do-artilheiras)
     - [Frontend](#frontend)
       - [8 - Faça uma requisição para o endpoint `/ranking` e preencha uma tabela com os dados retornados](#8---faça-uma-requisição-para-o-endpoint-ranking-e-preencha-uma-tabela-com-os-dados-retornados)
       - [9 - Faça uma requisição para o endpoint `/scorers` e preencha uma tabela com os dados retornados](#9---faça-uma-requisição-para-o-endpoint-scorers-e-preencha-uma-tabela-com-os-dados-retornados)
@@ -302,9 +302,13 @@ Alguns exemplos:
 
 - Será validado que é possível fazer login com sucesso:
 
-### 2 - Sua aplicação deve ter o endpoint GET `/player/:clubName`
+### 2 - Crie um endpoint para listar as jogadoras de um clube em específico
 
-**Os seguintes pontos serão avaliados:**
+- A rota deve ser (`/player/:clubName`);
+
+- A rota pode ser acessada por usuário logados ou não;
+
+**Além disso, as seguintes verificações serão feitas:**
 
 - Retorna todas as jogadoras de um determinado time especificado pelo `clubName` vindo da rota.
 
@@ -332,9 +336,13 @@ Alguns exemplos:
 }
 ```
 
-### 3 - Sua aplicação deve ter o endpoint GET `/clubs`
+### 3 - Crie um endpoint para listar todos os clubes cadastrados
 
-**Os seguintes pontos serão avaliados:**
+- Sua rota deve ser (`/clubs`);
+
+- A rota pode ser acessada por usuário logados ou não;
+
+**Além disso, as seguintes verificações serão feitas:**
 
 - Retorna todos os times cadastrados no banco de dados.
 
@@ -362,9 +370,15 @@ Alguns exemplos:
 }
 ```
 
-### 4 - Sua aplicação deve ter o endpoint POST `/match`
+### 4 - Crie um endpoint para o cadastro de novas partidas
 
-**Os seguintes pontos serão avaliados:**
+- Sua rota deve ser (`/match`);
+
+- A partida só pode ser criada caso o usuário esteja logado e o token JWT validado;
+
+- O usuário logado precisa ter, necessariamente, a role `admin`;
+
+***Além disso, as seguintes verificações serão feitas:**
 
 - O endpoint deve ser capaz de adicionar uma nova partida a sua tabela no banco de dados;
 
@@ -418,11 +432,15 @@ Alguns exemplos:
 }
 ```
 
-### 5 - Sua aplicação deve ter o endpoint POST `/goal`
+### 5 - Crie um endpoint para o cadastro de novos gols
 
-**Os seguintes pontos serão avaliados:**
+- Sua rota deve ser (`/goal`);
 
-- O endpoint deve ser capaz de adicionar um novo gol a sua tabela no banco de dados;
+- O gol só pode ser criado caso o usuário esteja logado e o token JWT validado;
+
+- O usuário logado precisa ter, necessariamente, a role `admin`;
+
+***Além disso, as seguintes verificações serão feitas:**
 
 - O corpo da requisição deverá ter o seguinte formato:
 
@@ -430,11 +448,15 @@ Alguns exemplos:
 {
   "matcherId": 1,
   "playerId": "424",
-  "type": "favor"
+  "club_id": "16"
 }
 ```
 
-- A jogadora que marcar um gol deverá corresponder ao elenco de um dos times envolvidos na partida;
+- O endpoint deve ser capaz de adicionar um novo gol para o respectivo time em uma determinada partida;
+
+- O endpoint deve ser capaz de adicionar um novo gol para a jogadora específica;
+
+- A jogadora que marcar um gol deverá corresponder ao elenco do time informado;
 
 - Caso tente-se inserir um gol de uma jogadora que não pertence a um time envolvido na partida deverá retornar o seguinte erro:
 
@@ -442,19 +464,23 @@ Alguns exemplos:
 { "message": "This player cannot score a goal for these teams" }
 ```
 
-- O `type` do gol poderá ser `favor` ou `own`, valores utilizados para indicar um gol a favor ou um gol contra, respectivamente.
-
-- Quando o gol for inserido com sucesso, deve-se retornar os dados do gol marcado:
+- Quando o gol for inserido com sucesso, deve-se retornar os dados atualizados da partida:
 
 ```json
   "matcherId": 1,
-  "playerId": "424",
-  "type": "ally"
+  "club_id_1": "16",
+  "club_1_goals": "1",
+  "club_id_2": "8",
+  "club_2_goals": "0"
 ```
 
-### 6 - Sua aplicação deve ter o endpoint GET `/ranking`
+### 6 - Crie um endpoint para retornar a tabela do campeonato
 
-**Os seguintes pontos serão avaliados:**
+- Sua rota deve ser (`/ranking`);
+
+- A rota pode ser acessada por usuário logados ou não;
+
+**Além disso, as seguintes verificações serão feitas:**
 
 - Esse endpoint irá alimentar, no front-end, uma tabela idêntica ao exemplo abaixo:
 
@@ -531,9 +557,13 @@ Alguns exemplos:
   
   Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
-### 7 - Sua aplicação deve ter o endpoint GET `/scorers`
+### 7 - Crie um endpoint para retornar a tabela do artilheiras
 
-**Os seguintes pontos serão avaliados:**
+- Sua rota deve ser (`/scorers`);
+
+- A rota pode ser acessada por usuário logados ou não;
+
+**Além disso, as seguintes verificações serão feitas:**
 
 - A classificação da artilharia utilizará como parâmetro a quantidade total de gols marcados por uma jogadora;
 
