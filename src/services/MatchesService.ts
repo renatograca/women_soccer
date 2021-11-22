@@ -1,6 +1,25 @@
 import Matches from '../database/models/MatchesModel';
 
 class MatchesService {
+  async createMatch(
+    homeTeam: INTEGER,
+    homeTeamGoals: INTEGER,
+    awayTeam: INTEGER,
+    awayTeamGoals: INTEGER,
+  ): Promise<any> {
+    try {
+      const match = Matches.create({
+        homeTeam,
+        homeTeamGoals,
+        awayTeam,
+        awayTeamGoals,
+      });
+      return match;
+    } catch (error) {
+      return error;
+    }
+  }
+
   async getAllMatches() {
     const matches = await Matches.findAll();
     return matches;
