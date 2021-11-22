@@ -34,6 +34,11 @@ class UserService implements IUserService {
     }
   }
 
+  async getAllUsers() {
+    const users = await Users.findAll();
+    return users;
+  }
+
   async getOneUser(email: string): Promise<any> {
     try {
       const users = await Users.findOne({

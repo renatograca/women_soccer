@@ -10,13 +10,13 @@ class AuthController {
     const user = await UserService.getOneUser(email);
 
     if (!user) {
-      return res.sendStatus(401);
+      return res.status(401).json('User does not exists!');
     }
 
     const isValidPassword = await compare(password, user.dataValues.password);
 
     if (!isValidPassword) {
-      return res.sendStatus(401);
+      return res.status(401).json('Invalid password!');
     }
 
     const token = sign({ id: user.dataValues.id }, 'secret', { expiresIn: '1d' });
