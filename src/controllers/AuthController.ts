@@ -7,7 +7,7 @@ import UserService from '../services/UserService';
 class AuthController {
   public static async authenticate(req: Request, res: Response) {
     const { email, password } = req.body;
-    const user = await UserService.getOneUser(String(email), String(password));
+    const user = await UserService.getOneUser(email);
 
     if (!user) {
       return res.sendStatus(401);

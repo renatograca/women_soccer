@@ -34,10 +34,10 @@ class UserService implements IUserService {
     }
   }
 
-  async getOneUser(email: string, password: string): Promise<any> {
+  async getOneUser(email: string): Promise<any> {
     try {
       const users = await Users.findOne({
-        where: { email, password },
+        where: { email },
       });
       return users;
     } catch (error) {

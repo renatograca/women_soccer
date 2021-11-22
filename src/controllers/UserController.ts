@@ -1,13 +1,8 @@
-import { hashSync } from 'bcryptjs';
 import { Request, Response } from 'express';
+import { hashSync } from 'bcryptjs';
 import UserService from '../services/UserService';
 
 class UserController {
-  public static getUserProfileData(req: Request, res: Response) {
-    const data = UserService.userProfileData();
-    res.send(data).status(200);
-  }
-
   public static async createNewUser(req: Request, res: Response) {
     const {
       username,
@@ -15,8 +10,17 @@ class UserController {
       email,
       password,
     } = req.body;
-    hashSync(password, 8);
-    const user = await UserService.createUser(username, role, email, password);
+
+    const passwordHash = hashSync(password, 8);
+
+    const user = await UserService.createUser(username, role, email, passwordHash);
+
+    const checkUser = await UserService.getOneUser(email);
+
+    if (checkUser) {
+      return res.status(409);
+    }
+
     return res.status(200).json(user);
   }
 }
