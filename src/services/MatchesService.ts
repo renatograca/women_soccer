@@ -2,10 +2,10 @@ import Matches from '../database/models/MatchesModel';
 
 class MatchesService {
   async createMatch(
-    homeTeam: INTEGER,
-    homeTeamGoals: INTEGER,
-    awayTeam: INTEGER,
-    awayTeamGoals: INTEGER,
+    homeTeam: number,
+    homeTeamGoals: number,
+    awayTeam: number,
+    awayTeamGoals: number,
   ): Promise<any> {
     try {
       const match = Matches.create({

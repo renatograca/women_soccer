@@ -3,7 +3,8 @@ import MathcesController from '../controllers/MatchesController';
 
 const router = Router();
 
-router.get('/matches', MathcesController.getAllMetches);
+router.post('/matches', MathcesController.createNewMatch);
+router.get('/matches', MathcesController.getAllMatches);
 router.get('/matches/:id', MathcesController.getOneMatch);
 router.get('/result', MathcesController.result);
 
