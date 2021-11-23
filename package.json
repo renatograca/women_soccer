@@ -8,7 +8,8 @@
     "local": "ts-node ./src/server.ts",
     "dev": "npm run build && NODE_ENV=development node build/server.js",
     "stage": "npm run build && NODE_ENV=staging node build/server.js",
-    "start": "ts-node-dev src/server"
+    "start": "ts-node-dev src/server",
+    "db:reset": "./scripts/reset-db-dev.sh"
   },
   "keywords": [],
   "author": "",

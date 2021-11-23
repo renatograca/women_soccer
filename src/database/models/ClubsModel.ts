@@ -4,8 +4,9 @@ import db from '.';
 class Clubs extends Model {}
 
 Clubs.init({
-  club_name: STRING,
+  clubName: STRING,
 }, {
+  underscored: true,
   sequelize: db.connection,
   modelName: 'clubs',
   timestamps: false,
