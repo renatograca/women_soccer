@@ -1,5 +1,5 @@
-import Clubs from '../database/models/clubs.model';
-import Players from '../database/models/players.model';
+import Clubs from '../database/models/ClubsModel';
+import Players from '../database/models/PlayersModel';
 
 class PlayersService {
   async getAllPlayers() {
