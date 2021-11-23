@@ -274,11 +274,11 @@ Alguns exemplos:
 
 - Na configuração do `JWT` **não use variáveis de ambientes** para não ter conflito com o avaliador.
 
-- Um token `JWT` deve ser gerado e retornado caso haja sucesso no login. No seu payload deve estar presente o id, email e role do usuário.
+- Um token `JWT` deve ser gerado e retornado caso haja sucesso no login. No seu payload deve estar presente o id, name, email e role do usuário, **não informe no payload do JWT o password do usuário**.
 
 - O body da requisição deve conter o seguinte formato:
 
-  ```
+  ```json
   {
     "email": "string",
     "password": "string"
@@ -296,11 +296,31 @@ Alguns exemplos:
   
 - Será validado que o campo "password" é obrigatório:
 
+  Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+  ```json
+    "message": "All fields must be filled"
+  ```
+
 - Será validado que não é possível fazer login com um email inválido:
+
+  Se o login tiver o "email" **inválido** o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+  ```json
+    "message": "Incorrect username or password"
+  ```
 
 - Será validado que não é possível fazer login com uma senha inválida:
 
+  Se o login tiver a "senha" **inválida** o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+  ```json
+    "message": "Incorrect username or password"
+  ```
+  
 - Será validado que é possível fazer login com sucesso:
+
+  Se foi feito login com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+  ```json
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InRyeWJlciIsImVtYWlsIjoidHJ5YmVAYmV0cnliZS5jb20iLCJyb2xlIjoiYWRtaW4ifQ.ij_4bxgTexCRu23RRDGkkhDcNRO2aRrqypupczjyUDo"
+  ```
 
 ### 2 - Crie um endpoint para listar as jogadoras de um clube em específico
 
