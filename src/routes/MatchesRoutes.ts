@@ -1,9 +1,12 @@
 import { Router } from 'express';
+
 import MathcesController from '../controllers/MatchesController';
+
+import MatchMiddleware from '../middlewares/MatchMiddleware';
 
 const router = Router();
 
-router.post('/matches', MathcesController.createNewMatch);
+router.post('/matches', MatchMiddleware.validateTeam, MathcesController.createNewMatch);
 router.get('/matches', MathcesController.getAllMatches);
 router.get('/matches/:id', MathcesController.getOneMatch);
 router.get('/result', MathcesController.result);
