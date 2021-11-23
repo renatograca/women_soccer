@@ -8,8 +8,9 @@ const router = Router();
 
 router.post(
   '/matches',
-  MatchMiddleware.validateExistingTeam,
   MatchMiddleware.validateTeam,
+  MatchMiddleware.validateRepeatedMatch,
+  MatchMiddleware.validateExistingTeam,
   MathcesController.createNewMatch,
 );
 router.get('/matches', MathcesController.getAllMatches);
