@@ -13,19 +13,24 @@ class MatchMiddleware {
   }
 
   async validateExistingTeam(req: Request, res: Response, next: NextFunction) {
-    const { homeTeam, awayTeam } = req.body;
-    const existingTeam = await ClubsService.getAllClubs();
-    const teamData = existingTeam.map((team) => team.toJSON().id);
-    if (homeTeam !== teamData || awayTeam !== teamData) {
-      return res.status(401).json('There is no team with such id!');
+    try {
+      const { homeTeam, awayTeam } = req.body;
+      const existingTeam = await ClubsService.getAllClubs();
+      const homeTeamExists = existingTeam.some((team) => team.id === homeTeam);
+      const awayTeamExists = existingTeam.some((team) => team.id === awayTeam);
+      if (!homeTeamExists || !awayTeamExists) {
+        return res.status(401).json('There is no team with such id!');
+      }
+      return next();
+    } catch (error) {
+      return error;
     }
-    return next();
   }
 
   // async validateHomeAndAwayTeam(req: Request, res: Response, next: NextFunction) {
   //   const { homeTeam, awayTeam } = req.body;
 
-  //   if (!id) {
+  //   if () {
   //     return res.status(401).json('There is no team with such id!');
   //   }
   //   return next();
