@@ -45,24 +45,28 @@ class ResultService {
       group: ['awayTeam'],
     });
 
-    const resultClubs = await Promise.all([matchesC1, matchesC2]);
-    const together: object[] = [];
-    resultClubs[0].forEach(({ dataValues: homeClub }:any) => resultClubs[1]
-      .forEach(({ dataValues: visitingClub }:any) => {
-        if (homeClub.homeTeam === visitingClub.awayTeam) {
-          together.push({
-            club_id: homeClub.homeTeam,
-            result: +homeClub.resultHome + +visitingClub.resultAway,
-            games: +homeClub.gamesHome + +visitingClub.gamesAway,
-            victories: +homeClub.victoriesHome + +visitingClub.victoriesAway,
-            draws: +homeClub.drawsHome + +visitingClub.drawsAway,
-            looses: +homeClub.defeatsHome + +visitingClub.defeatsAway,
-            goals: +homeClub.goalsHome + +visitingClub.goalsAway,
-            ownGoals: +homeClub.ownGoalsHome + +visitingClub.ownGoalsAway,
-          });
-        }
-      }));
-    return together;
+    try {
+      const resultClubs = await Promise.all([matchesC1, matchesC2]);
+      const together: object[] = [];
+      resultClubs[0].forEach(({ dataValues: homeClub }:any) => resultClubs[1]
+        .forEach(({ dataValues: visitingClub }:any) => {
+          if (homeClub.homeTeam === visitingClub.awayTeam) {
+            together.push({
+              club_id: homeClub.homeTeam,
+              result: +homeClub.resultHome + +visitingClub.resultAway,
+              games: +homeClub.gamesHome + +visitingClub.gamesAway,
+              victories: +homeClub.victoriesHome + +visitingClub.victoriesAway,
+              draws: +homeClub.drawsHome + +visitingClub.drawsAway,
+              looses: +homeClub.defeatsHome + +visitingClub.defeatsAway,
+              goals: +homeClub.goalsHome + +visitingClub.goalsAway,
+              ownGoals: +homeClub.ownGoalsHome + +visitingClub.ownGoalsAway,
+            });
+          }
+        }));
+      return together.sort(({ result: a }: any, { result: b }: any):number => b - a);
+    } catch (error) {
+      return error;
+    }
   }
 }
 
