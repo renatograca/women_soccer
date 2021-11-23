@@ -17,7 +17,7 @@ Players.init({
 Players.belongsTo(Clubs, { foreignKey: 'club_id', as: 'club' });
 
 Clubs.hasMany(Players, {
-  foreignKey: 'id',
+  foreignKey: 'club_id',
   as: 'player',
 });
 

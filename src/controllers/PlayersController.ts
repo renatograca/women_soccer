@@ -7,9 +7,9 @@ export default class PlayersController {
     return res.status(200).json(players);
   }
 
-  public static async getOnePlayer(req: Request, res: Response) {
-    const { id } = req.params;
-    const player = await PlayersService.getOnePlayer(Number(id));
+  public static async gatPlayerForClub(req: Request, res: Response) {
+    const { clubName } = req.params;
+    const player = await PlayersService.gatPlayerForClub(clubName);
 
     return res.status(200).json(player);
   }

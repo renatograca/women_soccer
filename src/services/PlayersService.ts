@@ -7,11 +7,11 @@ class PlayersService {
     return players;
   }
 
-  async getOnePlayer(id: number): Promise<any> {
+  async gatPlayerForClub(clubName: string): Promise<any> {
     try {
-      const players = await Players.findOne({
-        where: { id },
-        include: [{ model: Clubs, as: 'club' }],
+      const players = await Clubs.findOne({
+        where: { club_name: clubName },
+        include: [{ model: Players, as: 'player' }],
       });
       return players;
     } catch (error) {
