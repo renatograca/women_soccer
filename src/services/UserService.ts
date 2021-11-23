@@ -1,4 +1,4 @@
-import Users from '../database/models/user.model';
+import Users from '../database/models/UsersModel';
 
 interface IUserData {
   name: string;
