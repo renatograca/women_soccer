@@ -24,6 +24,9 @@ class PlayersService {
     try {
       const player = await Players.findAll({
         where: { goals: { [Op.gt]: 0 } },
+        order: [
+          ['player_name', 'ASC'],
+        ],
         include: [{ model: Clubs, as: 'club' }],
       });
       const playerJson = player.map((play) => play.toJSON());
