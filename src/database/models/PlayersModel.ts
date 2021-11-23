@@ -5,11 +5,12 @@ import Clubs from './ClubsModel';
 class Players extends Model {}
 
 Players.init({
-  player_name: STRING,
+  playerName: STRING,
   position: STRING,
-  club_id: INTEGER,
+  clubId: INTEGER,
   goals: INTEGER,
 }, {
+  underscored: true,
   sequelize: db.connection,
   modelName: 'players',
   timestamps: false,
