@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import MathcesController from '../controllers/matches.controller';
+import MathcesController from '../controllers/MatchesController';
 
-import MatchMiddleware from '../middlewares/match.middleware';
+import MatchMiddleware from '../middlewares/MatchMiddleware';
 
 const router = Router();
 

@@ -1,5 +1,5 @@
 import { literal } from 'sequelize';
-import Matches from '../database/models/matches.model';
+import Matches from '../database/models/MatchesModel';
 import {
   resultC1, gamesC1, victoriesC1, drawsC1, defeatsC1, goalsC1, ownGoalsC1,
   resultC2, gamesC2, victoriesC2, drawsC2, defeatsC2, goalsC2, ownGoalsC2,
