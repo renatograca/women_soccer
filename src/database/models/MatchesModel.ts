@@ -9,6 +9,7 @@ Matches.init({
   awayTeam: INTEGER,
   awayTeamGoals: INTEGER,
 }, {
+  underscored: true,
   sequelize: db.connection,
   modelName: 'matches',
   timestamps: false,
