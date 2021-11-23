@@ -1,4 +1,4 @@
-import Matches from '../database/models/MatchesModel';
+import Matches from '../database/models/matches.model';
 
 class MatchesService {
   async createMatch(

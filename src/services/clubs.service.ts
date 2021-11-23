@@ -1,4 +1,4 @@
-import Clubs from '../database/models/ClubsModel';
+import Clubs from '../database/models/clubs.model';
 
 class ClubsService {
   table;
