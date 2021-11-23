@@ -10,11 +10,14 @@ class Clubs extends Model {
 Clubs.init({
   id: {
     type: INTEGER,
-    allowNull: true,
+    allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  clubName: STRING,
+  clubName: {
+    type: STRING,
+    allowNull: false,
+  },
 }, {
   underscored: true,
   sequelize: db.connection,

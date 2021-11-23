@@ -4,7 +4,7 @@ import Players from '../database/models/PlayersModel';
 
 class PlayersService {
   async getAllPlayers() {
-    const players = await Players.findAll();
+    const players = await Players.findAll({ raw: true });
     return players;
   }
 

@@ -35,7 +35,7 @@ class UserService implements IUserService {
   }
 
   async getAllUsers() {
-    const users = await Users.findAll();
+    const users = await Users.findAll({ raw: true });
     return users;
   }
 
