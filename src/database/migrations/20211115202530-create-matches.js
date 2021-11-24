@@ -25,6 +25,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
+      is_match_over: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
     });
   },
   down: async (queryInterface) => {

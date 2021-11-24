@@ -1,4 +1,4 @@
-import { Model, INTEGER } from 'sequelize';
+import { Model, INTEGER, BOOLEAN } from 'sequelize';
 import db from '.';
 
 class Matches extends Model {
@@ -11,6 +11,8 @@ class Matches extends Model {
   public awayTeam!: number;
 
   public awayTeamGoals!: number;
+
+  public isMatchOver!: boolean;
 }
 
 Matches.init({
@@ -35,6 +37,11 @@ Matches.init({
   awayTeamGoals: {
     type: INTEGER,
     allowNull: false,
+  },
+  isMatchOver: {
+    type: BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
   },
 }, {
   underscored: true,
