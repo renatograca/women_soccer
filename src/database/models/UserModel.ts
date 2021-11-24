@@ -13,6 +13,7 @@ Users.init({
   timestamps: false,
   sequelize: db.connection,
   modelName: 'users',
+  underscored: true,
 });
 
 export default Users;

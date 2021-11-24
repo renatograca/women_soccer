@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      player_name: {
+      playerName: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      club_id: {
+      clubId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },

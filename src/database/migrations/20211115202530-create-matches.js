@@ -7,21 +7,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      club_id_1: {
+      homeTeam: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
       },
-      club_1_goals: {
+      homeTeamGoals: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      club_id_2: {
+      awayTeam: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'clubs', key: 'id' },
       },
-      club_2_goals: {
+      awayTeamGoals: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },

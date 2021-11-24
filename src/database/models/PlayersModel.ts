@@ -5,14 +5,15 @@ import Clubs from './ClubsModel';
 class Players extends Model {}
 
 Players.init({
-  player_name: STRING,
+  playerName: STRING,
   position: STRING,
-  club_id: INTEGER,
+  clubId: INTEGER,
   goals: INTEGER,
 }, {
   sequelize: db.connection,
   modelName: 'players',
   timestamps: false,
+  underscored: true,
 });
 Players.belongsTo(Clubs, { foreignKey: 'club_id', as: 'club' });
 
