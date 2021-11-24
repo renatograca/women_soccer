@@ -16,6 +16,7 @@ Clubs.init({
   },
   clubName: {
     type: STRING,
+    field: 'club_name',
     allowNull: false,
   },
 }, {

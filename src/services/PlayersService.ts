@@ -11,7 +11,7 @@ class PlayersService {
   async getPlayerForClub(clubName: string): Promise<any> {
     try {
       const players = await Clubs.findOne({
-        where: { club_name: clubName },
+        where: { clubName },
         include: [{ model: Players, as: 'player' }],
       });
       return players;
