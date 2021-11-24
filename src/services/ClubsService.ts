@@ -8,7 +8,7 @@ class ClubsService {
   }
 
   public async getAllClubs() {
-    const clubs = await Clubs.findAll();
+    const clubs = await Clubs.findAll({ raw: true });
 
     return clubs;
   }

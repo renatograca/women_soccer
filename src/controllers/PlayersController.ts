@@ -7,10 +7,16 @@ export default class PlayersController {
     return res.status(200).json(players);
   }
 
-  public static async getOnePlayer(req: Request, res: Response) {
-    const { id } = req.params;
-    const player = await PlayersService.getOnePlayer(Number(id));
+  public static async getPlayerForClub(req: Request, res: Response) {
+    const { clubName } = req.params;
+    const player = await PlayersService.getPlayerForClub(clubName);
 
     return res.status(200).json(player);
+  }
+
+  public static async scorersPlayers(req: Request, res: Response) {
+    const rankingPlayers = await PlayersService.scorersPlayers();
+
+    return res.status(200).json(rankingPlayers);
   }
 }

@@ -1,4 +1,4 @@
-import Users from '../database/models/UserModel';
+import Users from '../database/models/UsersModel';
 
 interface IUserData {
   name: string;
@@ -35,7 +35,7 @@ class UserService implements IUserService {
   }
 
   async getAllUsers() {
-    const users = await Users.findAll();
+    const users = await Users.findAll({ raw: true });
     return users;
   }
 

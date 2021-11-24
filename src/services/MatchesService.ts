@@ -21,7 +21,7 @@ class MatchesService {
   }
 
   async getAllMatches() {
-    const matches = await Matches.findAll();
+    const matches = await Matches.findAll({ raw: true });
     return matches;
   }
 

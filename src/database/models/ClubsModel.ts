@@ -1,15 +1,28 @@
-import { Model, STRING } from 'sequelize';
+import { Model, STRING, INTEGER } from 'sequelize';
 import db from '.';
 
-class Clubs extends Model {}
+class Clubs extends Model {
+  public id!: number;
+
+  public clubName!: string;
+}
 
 Clubs.init({
-  clubName: STRING,
+  id: {
+    type: INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  clubName: {
+    type: STRING,
+    allowNull: false,
+  },
 }, {
+  underscored: true,
   sequelize: db.connection,
   modelName: 'clubs',
   timestamps: false,
-  underscored: true,
 });
 
 export default Clubs;

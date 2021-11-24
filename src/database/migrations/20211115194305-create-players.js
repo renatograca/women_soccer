@@ -10,6 +10,7 @@ module.exports = {
       playerName: {
         allowNull: false,
         type: Sequelize.STRING,
+        field: 'player_name',
       },
       position: {
         allowNull: false,
@@ -18,6 +19,7 @@ module.exports = {
       clubId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        field: 'club_id',
         references: { model: 'clubs', key: 'id' },
       },
       goals: {

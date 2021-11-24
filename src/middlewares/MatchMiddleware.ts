@@ -1,21 +1,47 @@
 import { Request, Response, NextFunction } from 'express';
-import { verify } from 'jsonwebtoken';
 
-import MatchService from '../services/MatchesService';
+import ClubsService from '../services/ClubsService';
+import MatchesService from '../services/MatchesService';
 
-const secret = '123456';
+class MatchMiddleware {
+  async validateTeam(req: Request, res: Response, next: NextFunction) {
+    const { homeTeam, awayTeam } = req.body;
 
-export default async (req: Request, res: Response, next: NextFunction) => {
-  const { id: matchId } = req.params;
-  const token = req.body.authorization;
-
-  const { id, role } = verify(token, secret);
-
-  const { userId } = MatchService.getOneMatch(Number(matchId));
-
-  if (role !== 'admin' || !id === userId) {
-    return res.status(401).json('User without permission!');
+    if (homeTeam === awayTeam) {
+      return res.status(401).json('Can not have the same team as home and away!');
+    }
+    return next();
   }
 
-  return next();
-};
+  async validateExistingTeam(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { homeTeam, awayTeam } = req.body;
+      const existingTeam = await ClubsService.getAllClubs();
+      const homeTeamExists = existingTeam.some((team) => team.id === homeTeam);
+      const awayTeamExists = existingTeam.some((team) => team.id === awayTeam);
+      if (!homeTeamExists || !awayTeamExists) {
+        return res.status(401).json('There is no team with such id!');
+      }
+      return next();
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async validateRepeatedMatch(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { homeTeam, awayTeam } = req.body;
+      const matchHistory = await MatchesService.getAllMatches();
+      const homeTeamHistory = matchHistory.some((team) => team.homeTeam === homeTeam);
+      const awayTeamHistory = matchHistory.some((team) => team.awayTeam === awayTeam);
+      if (homeTeamHistory && awayTeamHistory) {
+        return res.status(401).json('This match already happened!');
+      }
+      return next();
+    } catch (error) {
+      return error;
+    }
+  }
+}
+
+export default new MatchMiddleware();
