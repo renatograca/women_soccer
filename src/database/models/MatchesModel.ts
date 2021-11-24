@@ -48,6 +48,5 @@ Matches.init({
   sequelize: db.connection,
   modelName: 'matches',
   timestamps: false,
-  underscored: true,
 });
 export default Matches;

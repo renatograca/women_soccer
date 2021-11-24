@@ -51,7 +51,7 @@ class ResultService {
       resultClubs[0].forEach(({ dataValues: homeClub }:any) => resultClubs[1]
         .forEach(({ dataValues: visitingClub }:any) => {
           if (homeClub.homeTeam === visitingClub.awayTeam) {
-            together.push({
+            const result = {
               club_id: homeClub.homeTeam,
               result: +homeClub.resultHome + +visitingClub.resultAway,
               games: +homeClub.gamesHome + +visitingClub.gamesAway,
@@ -60,7 +60,14 @@ class ResultService {
               looses: +homeClub.defeatsHome + +visitingClub.defeatsAway,
               goals: +homeClub.goalsHome + +visitingClub.goalsAway,
               ownGoals: +homeClub.ownGoalsHome + +visitingClub.ownGoalsAway,
-            });
+              goalsBalance: 0,
+              efficiency: 0,
+            };
+
+            result.goalsBalance = result.goals - result.ownGoals;
+            result.efficiency = Number(((result.result / (result.games * 3)) * 100).toFixed(2));
+
+            together.push(result);
           }
         }));
       return together.sort(({ result: a }: any, { result: b }: any):number => b - a);
