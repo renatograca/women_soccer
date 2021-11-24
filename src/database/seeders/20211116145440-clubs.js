@@ -9,52 +9,52 @@ module.exports = {
       'clubs',
       [
         {
-          clubName: 'Avaí/Kindermann',
+          club_name: 'Avaí/Kindermann',
         },
         {
-          clubName: 'Bahia',
+          club_name: 'Bahia',
         },
         {
-          clubName: 'Botafogo',
+          club_name: 'Botafogo',
         },
         {
-          clubName: 'Corinthians',
+          club_name: 'Corinthians',
         },
         {
-          clubName: 'Cruzeiro',
+          club_name: 'Cruzeiro',
         },
         {
-          clubName: 'Ferroviária',
+          club_name: 'Ferroviária',
         },
         {
-          clubName: 'Flamengo',
+          club_name: 'Flamengo',
         },
         {
-          clubName: 'Grêmio',
+          club_name: 'Grêmio',
         },
         {
-          clubName: 'Internacional',
+          club_name: 'Internacional',
         },
         {
-          clubName: 'Minas Brasília',
+          club_name: 'Minas Brasília',
         },
         {
-          clubName: 'Napoli-SC',
+          club_name: 'Napoli-SC',
         },
         {
-          clubName: 'Palmeiras',
+          club_name: 'Palmeiras',
         },
         {
-          clubName: 'Real Brasília',
+          club_name: 'Real Brasília',
         },
         {
-          clubName: 'Santos',
+          club_name: 'Santos',
         },
         {
-          clubName: 'São José-SP',
+          club_name: 'São José-SP',
         },
         {
-          clubName: 'São Paulo',
+          club_name: 'São Paulo',
         },
       ],
       {},

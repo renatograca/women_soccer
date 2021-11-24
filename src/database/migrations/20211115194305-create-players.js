@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      playerName: {
+      player_name: {
         allowNull: false,
         type: Sequelize.STRING,
         field: 'player_name',
@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      clubId: {
+      club_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         field: 'club_id',

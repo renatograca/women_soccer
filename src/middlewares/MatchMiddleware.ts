@@ -31,10 +31,13 @@ class MatchMiddleware {
   async validateRepeatedMatch(req: Request, res: Response, next: NextFunction) {
     try {
       const { homeTeam, awayTeam } = req.body;
-      const matchHistory = await MatchesService.getAllMatches();
-      const homeTeamHistory = matchHistory.some((team) => team.homeTeam === homeTeam);
-      const awayTeamHistory = matchHistory.some((team) => team.awayTeam === awayTeam);
-      if (homeTeamHistory && awayTeamHistory) {
+      // const matchHistory = await MatchesService.getAllMatches();
+      const matchId = await MatchesService.findMatchIdByTeams(homeTeam, awayTeam);
+      const findExistingMatch = matchId.some((item) => item.id);
+
+      // const homeTeamHistory = matchHistory.some((team) => team.homeTeam === homeTeam);
+      // const awayTeamHistory = matchHistory.some((team) => team.awayTeam === awayTeam);
+      if (findExistingMatch) {
         return res.status(401).json('This match already happened!');
       }
       return next();
