@@ -8,7 +8,7 @@ import ClubsService from '../services/ClubsService';
 import MatchesService from '../services/MatchesService';
 
 class MatchMiddleware {
-  async validateCreate(req: Req, res: Res, next: Next) {
+  async validateUpdate(req: Req, res: Res, next: Next) {
     const { inProgress } = req.body;
     const match = await MatchesService.getAllMatches();
     const isMatchInProgress = match.some((item) => item.inProgress === inProgress);

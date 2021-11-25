@@ -1,12 +1,6 @@
 import Clubs from '../database/models/ClubsModel';
 
 class ClubsService {
-  table;
-
-  constructor() {
-    this.table = ['hello'];
-  }
-
   public async getAllClubs() {
     const clubs = await Clubs.findAll({ raw: true });
 

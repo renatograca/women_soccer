@@ -11,5 +11,6 @@ router.post(
   UserMiddleware.validateEmail,
   UsersController.createNewUser,
 );
+router.get('/users', UsersController.getOneUser);
 
 export default router;
