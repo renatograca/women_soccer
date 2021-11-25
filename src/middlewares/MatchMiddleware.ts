@@ -1,10 +1,24 @@
-import { Request, Response, NextFunction } from 'express';
+import {
+  Request as Req,
+  Response as Res,
+  NextFunction as Next,
+} from 'express';
 
 import ClubsService from '../services/ClubsService';
 import MatchesService from '../services/MatchesService';
 
 class MatchMiddleware {
-  async validateTeam(req: Request, res: Response, next: NextFunction) {
+  async validateCreate(req: Req, res: Res, next: Next) {
+    const { inProgress } = req.body;
+    const match = await MatchesService.getAllMatches();
+    const isMatchInProgress = match.some((item) => item.inProgress === inProgress);
+    if (isMatchInProgress === false) {
+      return res.status(401).json('This match is over!');
+    }
+    return next();
+  }
+
+  async validateTeam(req: Req, res: Res, next: Next) {
     const { homeTeam, awayTeam } = req.body;
 
     if (homeTeam === awayTeam) {
@@ -13,7 +27,7 @@ class MatchMiddleware {
     return next();
   }
 
-  async validateExistingTeam(req: Request, res: Response, next: NextFunction) {
+  async validateExistingTeam(req: Req, res: Res, next: Next) {
     try {
       const { homeTeam, awayTeam } = req.body;
       const existingTeam = await ClubsService.getAllClubs();
@@ -28,15 +42,11 @@ class MatchMiddleware {
     }
   }
 
-  async validateRepeatedMatch(req: Request, res: Response, next: NextFunction) {
+  async validateRepeatedMatch(req: Req, res: Res, next: Next) {
     try {
       const { homeTeam, awayTeam } = req.body;
-      // const matchHistory = await MatchesService.getAllMatches();
       const matchId = await MatchesService.findMatchIdByTeams(homeTeam, awayTeam);
       const findExistingMatch = matchId.some((item) => item.id);
-
-      // const homeTeamHistory = matchHistory.some((team) => team.homeTeam === homeTeam);
-      // const awayTeamHistory = matchHistory.some((team) => team.awayTeam === awayTeam);
       if (findExistingMatch) {
         return res.status(401).json('This match already happened!');
       }

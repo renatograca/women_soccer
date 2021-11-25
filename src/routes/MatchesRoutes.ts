@@ -16,5 +16,6 @@ router.post(
 router.get('/matches', MatchesController.getAllMatches);
 router.get('/matches/:id', MatchesController.getOneMatch);
 router.get('/result', MatchesController.result);
+// router.put('/matches/:id', MatchesController.updateMatch);
 
 export default router;

@@ -15,9 +15,7 @@ class ClubsService {
 
   async getOneClub(id: number): Promise<any> {
     try {
-      const club = await Clubs.findOne({
-        where: { id },
-      });
+      const club = await Clubs.findByPk(id);
 
       return club;
     } catch (error) {

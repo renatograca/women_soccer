@@ -39,9 +39,20 @@ class MatchesService {
   }
 
   async getOneMatch(id: number) {
-    const matches = await Matches.findOne({
-      where: { id },
-    });
+    const matches = await Matches.findByPk(id);
+    return matches;
+  }
+
+  async updateMatch(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    const matches = await Matches.update(
+      {
+        homeTeamGoals,
+        awayTeamGoals,
+      },
+      {
+        where: { id },
+      },
+    );
     return matches;
   }
 }

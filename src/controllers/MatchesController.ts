@@ -39,6 +39,10 @@ class MatchesController {
     return res.status(200).json(match);
   }
 
+  // public static async updateMatch(req: Request, res: Response) {
+  //   const { id } = req.params;
+  // }
+
   public static async result(req: Request, res: Response) {
     const matches = await ResultService.result();
     return res.status(200).json(matches);
