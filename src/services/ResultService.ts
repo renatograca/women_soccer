@@ -52,25 +52,27 @@ class ResultService {
         .forEach(({ dataValues: visitingClub }:any) => {
           if (homeClub.homeTeam === visitingClub.awayTeam) {
             const result = {
-              club_id: homeClub.homeTeam,
-              result: +homeClub.resultHome + +visitingClub.resultAway,
-              games: +homeClub.gamesHome + +visitingClub.gamesAway,
-              victories: +homeClub.victoriesHome + +visitingClub.victoriesAway,
-              draws: +homeClub.drawsHome + +visitingClub.drawsAway,
-              looses: +homeClub.defeatsHome + +visitingClub.defeatsAway,
-              goals: +homeClub.goalsHome + +visitingClub.goalsAway,
-              ownGoals: +homeClub.ownGoalsHome + +visitingClub.ownGoalsAway,
+              name: homeClub.homeTeam,
+              totalPoints: +homeClub.resultHome + +visitingClub.resultAway,
+              totalGames: +homeClub.gamesHome + +visitingClub.gamesAway,
+              totalVictories: +homeClub.victoriesHome + +visitingClub.victoriesAway,
+              totalDraws: +homeClub.drawsHome + +visitingClub.drawsAway,
+              totalLooses: +homeClub.defeatsHome + +visitingClub.defeatsAway,
+              goalsFavor: +homeClub.goalsHome + +visitingClub.goalsAway,
+              goalsOwn: +homeClub.ownGoalsHome + +visitingClub.ownGoalsAway,
               goalsBalance: 0,
               efficiency: 0,
             };
 
-            result.goalsBalance = result.goals - result.ownGoals;
-            result.efficiency = Number(((result.result / (result.games * 3)) * 100).toFixed(2));
+            result.goalsBalance = result.goalsFavor - result.goalsOwn;
+            result.efficiency = Number(
+              ((result.totalPoints / (result.totalGames * 3)) * 100).toFixed(2),
+            );
 
             together.push(result);
           }
         }));
-      return together.sort(({ result: a }: any, { result: b }: any):number => b - a);
+      return together.sort(({ totalPoints: a }: any, { totalPoints: b }: any):number => b - a);
     } catch (error) {
       return error;
     }

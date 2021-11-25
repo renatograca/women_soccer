@@ -12,7 +12,7 @@ class Matches extends Model {
 
   public awayTeamGoals!: number;
 
-  public isMatchOver!: boolean;
+  public inProgress!: boolean;
 }
 
 Matches.init({
@@ -38,10 +38,10 @@ Matches.init({
     type: INTEGER,
     allowNull: false,
   },
-  isMatchOver: {
+  inProgress: {
     type: BOOLEAN,
     allowNull: false,
-    defaultValue: true,
+    defaultValue: false,
   },
 }, {
   underscored: true,

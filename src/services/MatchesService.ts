@@ -6,6 +6,7 @@ class MatchesService {
     homeTeamGoals: number,
     awayTeam: number,
     awayTeamGoals: number,
+    inProgress: boolean,
   ): Promise<any> {
     try {
       const match = Matches.create({
@@ -13,6 +14,7 @@ class MatchesService {
         homeTeamGoals,
         awayTeam,
         awayTeamGoals,
+        inProgress,
       });
       return match;
     } catch (error) {
@@ -25,10 +27,32 @@ class MatchesService {
     return matches;
   }
 
-  async getOneMatch(id: number) {
-    const matches = await Matches.findOne({
-      where: { id },
+  async findMatchIdByTeams(homeTeam: number, awayTeam: number) {
+    const matchId = await Matches.findAll({
+      raw: true,
+      where: {
+        homeTeam,
+        awayTeam,
+      },
     });
+    return matchId;
+  }
+
+  async getOneMatch(id: number) {
+    const matches = await Matches.findByPk(id);
+    return matches;
+  }
+
+  async updateMatch(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    const matches = await Matches.update(
+      {
+        homeTeamGoals,
+        awayTeamGoals,
+      },
+      {
+        where: { id },
+      },
+    );
     return matches;
   }
 }

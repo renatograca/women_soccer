@@ -25,10 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      is_match_over: {
+      in_progress: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        defaultValue: true,
+        defaultValue: false,
       },
     });
   },

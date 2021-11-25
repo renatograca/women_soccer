@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-// import Matches from '../database/models/MatchesModel';
+
 import MatchesService from '../services/MatchesService';
 import ResultService from '../services/ResultService';
 
@@ -11,6 +11,7 @@ class MatchesController {
         homeTeamGoals,
         awayTeam,
         awayTeamGoals,
+        inProgress,
       } = req.body;
 
       const match = await MatchesService.createMatch(
@@ -18,6 +19,7 @@ class MatchesController {
         homeTeamGoals,
         awayTeam,
         awayTeamGoals,
+        inProgress,
       );
 
       return res.status(200).json(match);
@@ -36,6 +38,10 @@ class MatchesController {
     const match = await MatchesService.getOneMatch(Number(id));
     return res.status(200).json(match);
   }
+
+  // public static async updateMatch(req: Request, res: Response) {
+  //   const { id } = req.params;
+  // }
 
   public static async result(req: Request, res: Response) {
     const matches = await ResultService.result();
