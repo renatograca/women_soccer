@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:3001'
+    const url = 'http://localhost:3001';
     const endpoint = '/result';
 
     if (leaderboard.length === 0) {
@@ -14,10 +14,10 @@ const Leaderboard = () => {
         .then((response) => setLeaderboard(response))
         .catch((error) => console.log(error));
     }
-  }, [leaderboard])
+  }, [leaderboard]);
 
   if (leaderboard.length === 0) {
-    return (<Loading />)
+    return (<Loading />);
   }
 
   return (
@@ -49,7 +49,7 @@ const Leaderboard = () => {
               goalsFavor,
               goalsOwn,
               goalsBalance,
-              efficiency
+              efficiency,
             },
             index) => (
               <tr key={ name }>
@@ -69,7 +69,7 @@ const Leaderboard = () => {
         </tbody>
       </table>
     </div>
-  )
+  );
 };
 
 export default Leaderboard;
