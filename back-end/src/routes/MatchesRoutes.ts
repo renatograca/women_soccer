@@ -14,6 +14,7 @@ router.post(
   MatchesController.createNewMatch,
 );
 router.get('/matches', MatchesController.getAllMatches);
+router.get('/matches/progress', MatchesController.matchesInProgress);
 router.get('/matches/:id', MatchesController.getOneMatch);
 router.get('/result', MatchesController.result);
 // router.put('/matches/:id', MatchesController.updateMatch);

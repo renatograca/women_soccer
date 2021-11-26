@@ -55,6 +55,14 @@ class MatchesService {
     );
     return matches;
   }
+
+  async matchesInProgress() {
+    const matches = await Matches.findAll({
+      raw: true,
+      where: { inProgress: true },
+    });
+    return matches;
+  }
 }
 
 export default new MatchesService();

@@ -47,6 +47,11 @@ class MatchesController {
     const matches = await ResultService.result();
     return res.status(200).json(matches);
   }
+
+  public static async matchesInProgress(req: Request, res: Response) {
+    const matches = await MatchesService.matchesInProgress();
+    return res.status(200).json(matches);
+  }
 }
 
 export default MatchesController;
