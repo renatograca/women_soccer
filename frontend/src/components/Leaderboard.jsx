@@ -9,9 +9,11 @@ const Leaderboard = () => {
     const url = 'http://localhost:3001'
     const endpoint = '/result';
 
-    requestLeaderboard(url, endpoint)
-      .then((response) => setLeaderboard(response))
-      .catch((error) => console.log(error));
+    if (leaderboard.length === 0) {
+      requestLeaderboard(url, endpoint)
+        .then((response) => setLeaderboard(response))
+        .catch((error) => console.log(error));
+    }
   }, [leaderboard])
 
   if (leaderboard.length === 0) {
@@ -50,7 +52,7 @@ const Leaderboard = () => {
               efficiency
             },
             index) => (
-              <tr>
+              <tr key={ name }>
                 <td>{`${index + 1} ${name}`}</td>
                 <td>{ totalPoints }</td>
                 <td>{ totalGames }</td>
