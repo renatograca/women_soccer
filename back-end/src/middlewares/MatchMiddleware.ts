@@ -18,6 +18,13 @@ class MatchMiddleware {
     return next();
   }
 
+  validateQuantityGoals(homeTeamGoals: number, awayTeamGoals: number) {
+    if (homeTeamGoals < 0 || awayTeamGoals < 0) {
+      return true;
+    }
+    return false;
+  }
+
   async validateTeam(req: Req, res: Res, next: Next) {
     const { homeTeam, awayTeam } = req.body;
 

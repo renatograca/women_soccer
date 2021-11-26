@@ -39,17 +39,21 @@ class MatchesController {
     return res.status(200).json(match);
   }
 
-  // public static async updateMatch(req: Request, res: Response) {
-  //   const { id } = req.params;
-  // }
-
   public static async result(req: Request, res: Response) {
     const matches = await ResultService.result();
     return res.status(200).json(matches);
   }
 
   public static async matchesInProgress(req: Request, res: Response) {
-    const matches = await MatchesService.matchesInProgress();
+    const { inProgress } = req.body;
+    const matches = await MatchesService.matchesInProgress(inProgress);
+    return res.status(200).json(matches);
+  }
+
+  public static async updateMatch(req: Request, res: Response) {
+    const { id, homeTeamGoals, awayTeamGoals } = req.body;
+    const matches = await MatchesService.updateMatch(id, homeTeamGoals, awayTeamGoals);
+    if (!matches) { return res.status(401).json({ message: 'Quantity goals invalid' }); }
     return res.status(200).json(matches);
   }
 }

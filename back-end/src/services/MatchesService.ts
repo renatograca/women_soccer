@@ -1,3 +1,4 @@
+import MatchMiddleware from '../middlewares/MatchMiddleware';
 import Matches from '../database/models/MatchesModel';
 
 class MatchesService {
@@ -44,6 +45,9 @@ class MatchesService {
   }
 
   async updateMatch(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    const validateQuantityGoals = MatchMiddleware
+      .validateQuantityGoals(homeTeamGoals, awayTeamGoals);
+    if (validateQuantityGoals) { return false; }
     const matches = await Matches.update(
       {
         homeTeamGoals,
@@ -56,10 +60,10 @@ class MatchesService {
     return matches;
   }
 
-  async matchesInProgress() {
+  async matchesInProgress(inProgress: boolean) {
     const matches = await Matches.findAll({
       raw: true,
-      where: { inProgress: true },
+      where: { inProgress },
     });
     return matches;
   }
