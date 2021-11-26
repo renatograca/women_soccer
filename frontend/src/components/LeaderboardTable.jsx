@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import requestLeaderboard from '../services/requests';
 import Loading from './Loading';
 
-const Leaderboard = () => {
+const LeaderboardTable = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
@@ -72,4 +72,4 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+export default LeaderboardTable;
