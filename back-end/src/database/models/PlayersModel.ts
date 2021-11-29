@@ -43,7 +43,7 @@ Players.init({
   modelName: 'players',
   timestamps: false,
 });
-Players.belongsTo(Clubs, { foreignKey: 'clubId', as: 'club' });
+Players.belongsTo(Clubs, { foreignKey: 'id', as: 'club' });
 
 Clubs.hasMany(Players, {
   foreignKey: 'clubId',

@@ -1,5 +1,6 @@
 import MatchMiddleware from '../middlewares/MatchMiddleware';
 import Matches from '../database/models/MatchesModel';
+import Clubs from '../database/models/ClubsModel';
 
 class MatchesService {
   async createMatch(
@@ -24,7 +25,12 @@ class MatchesService {
   }
 
   async getAllMatches() {
-    const matches = await Matches.findAll({ raw: true });
+    const matches = await Matches.findAll({
+      include: [
+        { model: Clubs, as: 'homeClub', attributes: ['clubName'] },
+        { model: Clubs, as: 'awayClub', attributes: ['clubName'] },
+      ],
+    });
     return matches;
   }
 

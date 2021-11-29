@@ -25,6 +25,10 @@ Matches.init({
   homeTeam: {
     type: INTEGER,
     allowNull: false,
+    references: {
+      model: 'Clubs',
+      key: 'id',
+    },
   },
   homeTeamGoals: {
     type: INTEGER,
@@ -49,4 +53,5 @@ Matches.init({
   modelName: 'matches',
   timestamps: false,
 });
+
 export default Matches;
