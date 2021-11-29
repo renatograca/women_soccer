@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import requestData from '../services/requests';
+import { requestData } from '../services/requests';
 import TeamOptions from '../components/TeamOption';
 import Scoreboard from '../components/Scoreboard';
 import '../styles/pages/matchSettings.css';
