@@ -4,7 +4,7 @@ import Loading from './Loading';
 
 const GamesTable = () => {
   const [games, setGames] = useState([]);
-  const [isAdm] = useState(false);
+  const [isAdm, setIsAdm] = useState(false);
 
   useEffect(() => {
     const url = 'http://localhost:3001';
@@ -15,6 +15,9 @@ const GamesTable = () => {
         .then((response) => setGames(response))
         .catch((error) => console.log(error));
     }
+
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    if(user.role === 'adm') { setIsAdm(true); }
   }, [games]);
 
   if (!games.length) {
