@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import requestData from '../services/requests';
+import { requestData } from '../services/requests';
 import Loading from './Loading';
 
 const LeaderboardTable = () => {

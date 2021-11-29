@@ -1,17 +1,36 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { requestLogin } from '../services/requests';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLogged, setIsLogged] = useState(false);
+
+  const login = async () => {
+    try {
+      const url = 'http://localhost:3001';
+      const endpoint = '/auth';
+
+      const { token, user } = await requestLogin(url, endpoint, { email, password });
+
+      localStorage.setItem('user', JSON.stringify({ token, ...user }));
+      setIsLogged(true);
+    } catch (error) {
+      setIsLogged(false);
+    }
+  };
+
+  if (isLogged) return <Navigate to="/adm/settings" />;
 
   return (
     <form>
-      <label htmlFor="username-input">
-        Usuário:
+      <label htmlFor="email-input">
+        Email:
         <input
           type="text"
-          value={ username }
-          onChange={ ({ target: { value } }) => setUsername(value) }
+          value={ email }
+          onChange={ ({ target: { value } }) => setEmail(value) }
         />
       </label>
       <label htmlFor="password-input">
@@ -22,7 +41,7 @@ const Login = () => {
           onChange={ ({ target: { value } }) => setPassword(value) }
         />
       </label>
-      <button type="button">
+      <button type="button" onClick={ () => login() }>
         Login
       </button>
     </form>
