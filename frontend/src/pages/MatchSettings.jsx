@@ -26,7 +26,7 @@ const MatchSettings = () => {
 
   return (
     <>
-      <h1>Adicionar/Alterar Partida</h1>
+      <h1 className="match-settings">Adicionar/Alterar Partida</h1>
       <form className="match-settings-form">
         <TeamOptions
           teams={ clubs }
