@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import requestLeaderboard from '../services/requests';
+import requestData from '../services/requests';
 import Loading from './Loading';
 
 const LeaderboardTable = () => {
@@ -10,7 +10,7 @@ const LeaderboardTable = () => {
     const endpoint = '/result';
 
     if (leaderboard.length === 0) {
-      requestLeaderboard(url, endpoint)
+      requestData(url, endpoint)
         .then((response) => setLeaderboard(response))
         .catch((error) => console.log(error));
     }
