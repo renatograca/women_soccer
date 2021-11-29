@@ -1,4 +1,5 @@
 import { literal } from 'sequelize';
+import Clubs from '../database/models/ClubsModel';
 import Matches from '../database/models/MatchesModel';
 import {
   resultC1, gamesC1, victoriesC1, drawsC1, defeatsC1, goalsC1, ownGoalsC1,
@@ -29,6 +30,7 @@ class ResultService {
         [literal(goalsC1), 'goalsHome'],
         [literal(ownGoalsC1), 'ownGoalsHome'],
       ],
+      include: [{ model: Clubs, as: 'homeClub' }],
       group: ['homeTeam'],
     });
     const matchesC2 = Matches.findAll({
@@ -42,6 +44,7 @@ class ResultService {
         [literal(goalsC2), 'goalsAway'],
         [literal(ownGoalsC2), 'ownGoalsAway'],
       ],
+      include: [{ model: Clubs, as: 'awayClub' }],
       group: ['awayTeam'],
     });
 
@@ -52,7 +55,7 @@ class ResultService {
         .forEach(({ dataValues: visitingClub }:any) => {
           if (homeClub.homeTeam === visitingClub.awayTeam) {
             const result = {
-              name: homeClub.homeTeam,
+              name: homeClub.homeClub.clubName,
               totalPoints: +homeClub.resultHome + +visitingClub.resultAway,
               totalGames: +homeClub.gamesHome + +visitingClub.gamesAway,
               totalVictories: +homeClub.victoriesHome + +visitingClub.victoriesAway,
