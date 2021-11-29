@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
+import Token from '../middlewares/Token';
 
 import UserService from '../services/UserService';
 
@@ -13,13 +13,17 @@ class AuthController {
       return res.status(401).json('User does not exists!');
     }
 
-    const isValidPassword = await compare(password, user.dataValues.password);
+    const isValidPassword = await compare(password, user.password);
 
     if (!isValidPassword) {
       return res.status(401).json('Invalid password!');
     }
 
-    const token = sign({ id: user.dataValues.id }, 'secret', { expiresIn: '1d' });
+    delete user.password;
+
+    const token = Token.createToken({
+      ...user,
+    });
 
     return res.json({
       user,
