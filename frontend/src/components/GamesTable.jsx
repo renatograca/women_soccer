@@ -38,17 +38,17 @@ const GamesTable = () => {
           {
             games.map(({
               id,
-              homeTeam,
+              homeClub,
               homeTeamGoals,
-              awayTeam,
+              awayClub,
               awayTeamGoals,
               inProgress,
             }) => (
               <tr key={ id }>
-                <td>{ homeTeam }</td>
+                <td>{ homeClub.clubName }</td>
                 <td>{ homeTeamGoals }</td>
                 <td>X</td>
-                <td>{ awayTeam }</td>
+                <td>{ awayClub.clubName }</td>
                 <td>{ awayTeamGoals }</td>
                 <td>
                   {
