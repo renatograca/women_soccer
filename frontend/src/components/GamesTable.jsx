@@ -39,49 +39,50 @@ const GamesTable = () => {
         </thead>
         <tbody>
           {
-            games.map(({
-              id,
-              homeClub,
-              homeTeamGoals,
-              awayClub,
-              awayTeamGoals,
-              inProgress,
-            }) => (
-              <tr key={ id }>
-                <td>{ homeClub.clubName }</td>
-                <td>{ homeTeamGoals }</td>
-                <td>X</td>
-                <td>{ awayClub.clubName }</td>
-                <td>{ awayTeamGoals }</td>
-                <td>
-                  {
-                    (isAdm)
-                      ? (
-                        <Link
-                          to="/adm/settings"
-                          state={
-                            { id,
-                              homeClub,
-                              homeTeamGoals,
-                              awayClub,
-                              awayTeamGoals,
-                              inProgress }
-                          }
-                        >
-                          <button
-                            type="button"
-                            disabled={ !inProgress }
-                            onClick={ () => localStorage.setItem('game', 'editar') }
+            games.sort((a, b) => b.inProgress - a.inProgress)
+              .map(({
+                id,
+                homeClub,
+                homeTeamGoals,
+                awayClub,
+                awayTeamGoals,
+                inProgress,
+              }) => (
+                <tr key={ id }>
+                  <td>{ homeClub.clubName }</td>
+                  <td>{ homeTeamGoals }</td>
+                  <td>X</td>
+                  <td>{ awayClub.clubName }</td>
+                  <td>{ awayTeamGoals }</td>
+                  <td>
+                    {
+                      (isAdm)
+                        ? (
+                          <Link
+                            to="/adm/settings"
+                            state={
+                              { id,
+                                homeClub,
+                                homeTeamGoals,
+                                awayClub,
+                                awayTeamGoals,
+                                inProgress }
+                            }
                           >
-                            { (inProgress) ? 'Editar' : 'Finalizada'}
-                          </button>
-                        </Link>
-                      )
-                      : <div>{ (inProgress) ? 'Finalizada' : 'Em andamento' }</div>
-                  }
-                </td>
-              </tr>
-            ))
+                            <button
+                              type="button"
+                              disabled={ !inProgress }
+                              onClick={ () => localStorage.setItem('game', 'editar') }
+                            >
+                              { (inProgress) ? 'Editar' : 'Finalizada'}
+                            </button>
+                          </Link>
+                        )
+                        : <div>{ (inProgress) ? 'Em andamento' : 'Finalizada' }</div>
+                    }
+                  </td>
+                </tr>
+              ))
           }
         </tbody>
       </table>

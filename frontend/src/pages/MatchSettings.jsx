@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CreateNewGame from '../components/CreateNewGame';
 import EditGame from '../components/EditGame';
+import Loading from '../components/Loading';
 import api, { requestData, setToken } from '../services/requests';
 import '../styles/pages/matchSettings.css';
 
@@ -13,7 +14,25 @@ const MatchSettings = () => {
   // const [awayTeam, setAwayTeam] = useState('');
   const [homeClub, setHomeClub] = useState('');
   const [awayClub, setAwayClub] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const storage = JSON.parse(localStorage.getItem('user'));
+
+      if (!storage) return navigate('/');
+
+      const { token } = storage;
+
+      setToken(token);
+      api.get('/validate')
+        .then(() => setIsAuthenticated(true))
+        .catch(() => navigate('/'));
+    })();
+  }, [navigate]);
 
   useEffect(() => {
     const endpoint = '/clubs';
@@ -61,6 +80,8 @@ const MatchSettings = () => {
     };
     await api.patch('/matches', body);
   };
+
+  if (!isAuthenticated) return <Loading />;
 
   if (location.state) {
     const { id,
