@@ -1,36 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function EditGame() {
+import TeamOptions from './TeamOption';
+import Scoreboard from './Scoreboard';
+
+const EditGame = ({
+  homeTeam,
+  awayTeam,
+  homeTeamGoals,
+  awayTeamGoals,
+  idMatch,
+  updateMatch,
+  finishMatch,
+  getClub,
+}) => {
+  const [currentHomeTeamGoals, setHomeTeamGoals] = useState(homeTeamGoals);
+  const [currentAwayTeamGoals, setAwayTeamGoals] = useState(awayTeamGoals);
   return (
     <>
       <h1 className="match-settings">Adicionar/Alterar Partida</h1>
       <form className="match-settings-form">
         <TeamOptions
-          teams={ clubs }
-          setTeams={ setClubs }
+          teams={ homeTeam }
           homeTeam
           getClub={ getClub }
         />
         <Scoreboard
           homeTeam
-          score={ homeTeamScoreboard }
-          setScore={ setHomeTeamScoreboard }
+          score={ currentHomeTeamGoals }
+          setScore={ setHomeTeamGoals }
+          qtyGoal={ homeTeamGoals }
         />
         X
         <Scoreboard
           homeTeam={ false }
-          score={ awayTeamScoreboard }
-          setScore={ setAwayTeamScoreboard }
+          score={ currentAwayTeamGoals }
+          setScore={ setAwayTeamGoals }
+          qtyGoal={ awayTeamGoals }
         />
         <TeamOptions
-          teams={ clubs }
-          setTeams={ setClubs }
+          teams={ awayTeam }
           homeTeam={ false }
           getClub={ getClub }
         />
-        <button onClick={ () => createMatch(true) } type="button">Salvar</button>
+        <button
+          onClick={ () => updateMatch(idMatch,
+            {
+              homeTeamGoals: currentHomeTeamGoals,
+              awayTeamGoals: currentAwayTeamGoals,
+            }) }
+          type="button"
+        >
+          Editar
+
+        </button>
         <button onClick={ () => finishMatch(false) } type="button">Finalizar</button>
       </form>
     </>
   );
-}
+};
+
+EditGame.propTypes = ({
+  homeTeam: PropTypes.any,
+  awayTeam: PropTypes.any,
+  homeTeamGoals: PropTypes.any,
+  awayTeamGoals: PropTypes.any,
+  idMatch: PropTypes.any,
+  getClub: PropTypes.any,
+  finishMatc: PropTypes.any,
+  updateMatch: PropTypes.any,
+}).isRequired;
+
+export default EditGame;
