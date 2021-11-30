@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import MatchMiddleware from '../middlewares/MatchMiddleware';
 import Matches from '../database/models/MatchesModel';
 import Clubs from '../database/models/ClubsModel';
@@ -72,6 +73,21 @@ class MatchesService {
       where: { inProgress },
     });
     return matches;
+  }
+
+  async finishMatch(inProgress: boolean, { homeTeam, awayClub }: any) {
+    try {
+      const match = await Matches.update(
+        { inProgress },
+        { where: { [Op.and]: [{ homeTeam }, { awayClub }] } },
+      );
+      console.log(match);
+
+      return match;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
 

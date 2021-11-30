@@ -56,6 +56,13 @@ class MatchesController {
     if (!matches) { return res.status(401).json({ message: 'Quantity goals invalid' }); }
     return res.status(200).json(matches);
   }
+
+  public static async finishMatch(req: Request, res: Response) {
+    const { inProgress, homeTeam, awayClub } = req.body;
+    const match = await MatchesService.finishMatch(inProgress, { homeTeam, awayClub });
+    if (!match) { return res.status(401).json({ message: 'Partida já finalizada' }); }
+    return res.status(200).json(match);
+  }
 }
 
 export default MatchesController;

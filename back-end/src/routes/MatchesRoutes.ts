@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import Token from '../middlewares/Token';
 
 import MatchesController from '../controllers/MatchesController';
 
@@ -14,6 +15,7 @@ router.post(
   MatchesController.createNewMatch,
 );
 router.get('/matches', MatchesController.getAllMatches);
+router.patch('/matches', Token.validateToken, MatchesController.getAllMatches);
 router.get('/matches/progress', MatchesController.matchesInProgress);
 router.get('/matches/:id', MatchesController.getOneMatch);
 router.post('/matches/:id', MatchesController.updateMatch);
