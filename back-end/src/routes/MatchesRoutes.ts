@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// import Token from '../middlewares/Token';
+import Token from '../middlewares/Token';
 
 import MatchesController from '../controllers/MatchesController';
 
@@ -9,6 +9,7 @@ const router = Router();
 
 router.post(
   '/matches',
+  Token.validateToken,
   MatchMiddleware.validateExistingTeam,
   MatchMiddleware.validateTeam,
   MatchMiddleware.validateRepeatedMatch,

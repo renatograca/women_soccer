@@ -30,5 +30,15 @@ class Token {
       return error;
     }
   };
+
+  public roleToken = (token: string) => {
+    try {
+      const decoded = jwt.verify(token, this.secret);
+
+      return decoded;
+    } catch (error) {
+      return error;
+    }
+  };
 }
 export default new Token();

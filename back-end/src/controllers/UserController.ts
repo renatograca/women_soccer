@@ -32,11 +32,20 @@ class UserController {
 
   public static async getOneUser(req: Request, res: Response) {
     const user = await UserService.getOneUser(req.body.email);
-    if (!user) { return res.status(200).json({ message: 'pode logar' }); }
+    if (!user) { return res.status(401).json({ message: 'nao pode logar' }); }
     delete user.password;
     delete user.id;
     const token = Token.createToken(user);
     return res.status(200).json(token);
+  }
+
+  public static validate(req: Request, res: Response) {
+    const token = req.headers.authorization || 'vazio';
+
+    const { role }: any = Token.roleToken(token);
+
+    if (role !== 'adm') { return res.status(401).json({ message: 'acesso não permitido' }); }
+    return res.status(200).json(role);
   }
 }
 
