@@ -8,11 +8,10 @@ const GamesTable = () => {
   const [isAdm, setIsAdm] = useState(false);
 
   useEffect(() => {
-    const url = 'http://localhost:3001';
     const endpoint = '/matches';
 
     if (!games.length) {
-      requestData(url, endpoint)
+      requestData(endpoint)
         .then((response) => setGames(response))
         .catch((error) => console.log(error));
     }
