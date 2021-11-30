@@ -51,8 +51,9 @@ class MatchesController {
   }
 
   public static async updateMatch(req: Request, res: Response) {
-    const { id, homeTeamGoals, awayTeamGoals } = req.body;
-    const matches = await MatchesService.updateMatch(id, homeTeamGoals, awayTeamGoals);
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const { id } = req.params;
+    const matches = await MatchesService.updateMatch(+id, homeTeamGoals, awayTeamGoals);
     if (!matches) { return res.status(401).json({ message: 'Quantity goals invalid' }); }
     return res.status(200).json(matches);
   }

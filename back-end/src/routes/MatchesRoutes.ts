@@ -18,7 +18,7 @@ router.get('/matches', MatchesController.getAllMatches);
 router.patch('/matches', Token.validateToken, MatchesController.getAllMatches);
 router.get('/matches/progress', MatchesController.matchesInProgress);
 router.get('/matches/:id', MatchesController.getOneMatch);
-router.post('/matches/:id', MatchesController.updateMatch);
+router.patch('/matches/:id', MatchesController.updateMatch);
 router.get('/result', MatchesController.result);
 // router.put('/matches/:id', MatchesController.updateMatch);
 
