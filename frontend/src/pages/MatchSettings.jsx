@@ -47,11 +47,14 @@ const MatchSettings = () => {
   const updateMatch = async (id, updateGoals) => {
     await api.patch(`/matches/${id}`, { ...updateGoals });
   };
-  const finishMatch = async (inProgress, homeTeamFinished, awayTeamFinished) => {
+  const finishMatch = async (inProgress, teams) => {
+    const { homeTeamFinished, awayTeamFinished } = teams;
+    const { id: homeId } = clubs.find(({ clubName }) => clubName === homeTeamFinished);
+    const { id: awayId } = clubs.find(({ clubName }) => clubName === awayTeamFinished);
     const body = {
       inProgress,
-      homeTeam: homeClub || homeTeamFinished,
-      awayTeam: awayClub || awayTeamFinished,
+      homeTeam: homeClub || homeId,
+      awayTeam: awayClub || awayId,
     };
     await api.patch('/matches', body);
   };

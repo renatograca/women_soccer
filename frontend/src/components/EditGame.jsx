@@ -54,7 +54,16 @@ const EditGame = ({
           Editar
 
         </button>
-        <button onClick={ () => finishMatch(false) } type="button">Finalizar</button>
+        <button
+          onClick={ () => finishMatch(false, {
+            homeTeamFinished: homeTeam[0].clubName,
+            awayTeamFinished: awayTeam[0].clubName,
+          }) }
+          type="button"
+        >
+          Finalizar
+
+        </button>
       </form>
     </>
   );
