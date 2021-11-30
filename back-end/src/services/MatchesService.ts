@@ -75,11 +75,11 @@ class MatchesService {
     return matches;
   }
 
-  async finishMatch(inProgress: boolean, { homeTeam, awayClub }: any) {
+  async finishMatch(inProgress: boolean, { homeTeam, awayTeam }: any) {
     try {
       const match = await Matches.update(
         { inProgress },
-        { where: { [Op.and]: [{ homeTeam }, { awayClub }] } },
+        { where: { [Op.and]: [{ homeTeam }, { awayTeam }] } },
       );
       console.log(match);
 

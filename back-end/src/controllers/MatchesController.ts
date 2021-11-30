@@ -59,8 +59,10 @@ class MatchesController {
   }
 
   public static async finishMatch(req: Request, res: Response) {
-    const { inProgress, homeTeam, awayClub } = req.body;
-    const match = await MatchesService.finishMatch(inProgress, { homeTeam, awayClub });
+    const { inProgress, homeTeam, awayTeam } = req.body;
+    console.log(req.body, 'finish body');
+
+    const match = await MatchesService.finishMatch(inProgress, { homeTeam, awayTeam });
     if (!match) { return res.status(401).json({ message: 'Partida já finalizada' }); }
     return res.status(200).json(match);
   }
