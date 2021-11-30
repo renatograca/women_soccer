@@ -13,6 +13,7 @@ const CreateNewGame = ({
   awayTeamScoreboard,
   setAwayTeamScoreboard,
   createMatch,
+  finishMatch,
 }) => {
   const notCreated = 'not-created';
   const [inProgress, setInProgress] = useState(notCreated);
@@ -55,7 +56,7 @@ const CreateNewGame = ({
 
         </button>
         <button
-          onClick={ () => finishMatch(false) }
+          onClick={ () => { finishMatch(false); } }
           type="button"
           disabled={ (inProgress === notCreated) }
         >

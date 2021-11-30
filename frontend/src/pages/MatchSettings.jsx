@@ -33,12 +33,13 @@ const MatchSettings = () => {
 
   const createMatch = async (inProgress) => {
     const body = {
-      homeTeam: homeClub,
-      awayTeam: awayClub,
+      homeTeam: +homeClub,
+      awayTeam: +awayClub,
       homeTeamGoals: +homeTeamScoreboard,
       awayTeamGoals: +awayTeamScoreboard,
       inProgress,
     };
+    console.log(body);
     const user = JSON.parse(localStorage.getItem('user')) || { token: '' };
     setToken(user.token);
     await api.post('/matches', body);
@@ -47,10 +48,12 @@ const MatchSettings = () => {
   const updateMatch = async (id, updateGoals) => {
     await api.patch(`/matches/${id}`, { ...updateGoals });
   };
-  const finishMatch = async (inProgress, teams) => {
-    const { homeTeamFinished, awayTeamFinished } = teams;
-    const { id: homeId } = clubs.find(({ clubName }) => clubName === homeTeamFinished);
-    const { id: awayId } = clubs.find(({ clubName }) => clubName === awayTeamFinished);
+  const finishMatch = async (inProgress, teams = {}) => {
+    const { homeTeamFinished = '', awayTeamFinished = '' } = teams;
+    const { id: homeId } = clubs
+      .find(({ clubName }) => clubName === homeTeamFinished) || { id: '' };
+    const { id: awayId } = clubs
+      .find(({ clubName }) => clubName === awayTeamFinished) || { id: '' };
     const body = {
       inProgress,
       homeTeam: homeClub || homeId,
