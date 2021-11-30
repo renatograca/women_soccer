@@ -47,11 +47,11 @@ const MatchSettings = () => {
   const updateMatch = async (id, updateGoals) => {
     await api.patch(`/matches/${id}`, { ...updateGoals });
   };
-  const finishMatch = async (inProgress) => {
+  const finishMatch = async (inProgress, homeTeamFinished, awayTeamFinished) => {
     const body = {
       inProgress,
-      homeTeam: homeClub,
-      awayTeam: awayClub,
+      homeTeam: homeClub || homeTeamFinished,
+      awayTeam: awayClub || awayTeamFinished,
     };
     await api.patch('/matches', body);
   };
@@ -65,16 +65,14 @@ const MatchSettings = () => {
     } = location.state;
     return (
       <EditGame
-        setHomeTeamScoreboard={ setHomeTeamScoreboard }
-        setAwayTeamScoreboard={ setAwayTeamScoreboard }
         homeTeam={ [homeClubState] }
         awayTeam={ [awayClubState] }
         homeTeamGoals={ homeTeamGoals }
         awayTeamGoals={ awayTeamGoals }
         idMatch={ id }
-        getClub={ getClub }
         updateMatch={ updateMatch }
         finishMatch={ finishMatch }
+        getClub={ getClub }
       />
     );
   }
@@ -83,7 +81,7 @@ const MatchSettings = () => {
     <CreateNewGame
       setHomeTeamScoreboard={ setHomeTeamScoreboard }
       setAwayTeamScoreboard={ setAwayTeamScoreboard }
-      clubs={ [homeTeam, awayTeam] }
+      clubs={ clubs }
       getClub={ getClub }
       createMatch={ createMatch }
       finishMatch={ finishMatch }
