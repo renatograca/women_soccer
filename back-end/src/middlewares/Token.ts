@@ -27,7 +27,7 @@ class Token {
 
       return next();
     } catch (error) {
-      return error;
+      return res.status(400).json({ message: 'Token not found' });
     }
   };
 
