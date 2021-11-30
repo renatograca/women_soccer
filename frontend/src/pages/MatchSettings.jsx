@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import CreateNewGame from '../components/CreateNewGame';
+import EditGame from '../components/EditGame';
 // import { useLocation } from 'react-router-dom';
 import api, { requestData, setToken } from '../services/requests';
-import TeamOptions from '../components/TeamOption';
-import Scoreboard from '../components/Scoreboard';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
@@ -59,35 +59,8 @@ const MatchSettings = () => {
 
   return (
     <>
-      <h1 className="match-settings">Adicionar/Alterar Partida</h1>
-      <form className="match-settings-form">
-        <TeamOptions
-          teams={ clubs }
-          setTeams={ setClubs }
-          homeTeam
-          getClub={ getClub }
-        />
-        <Scoreboard
-          homeTeam
-          score={ homeTeamScoreboard }
-          setScore={ setHomeTeamScoreboard }
-        />
-        X
-        <Scoreboard
-          homeTeam={ false }
-          score={ awayTeamScoreboard }
-          setScore={ setAwayTeamScoreboard }
-        />
-        <TeamOptions
-          teams={ clubs }
-          setTeams={ setClubs }
-          homeTeam={ false }
-          getClub={ getClub }
-        />
-        { }
-        <button onClick={ () => createMatch(true) } type="button">Salvar</button>
-        <button onClick={ () => finishMatch(false) } type="button">Finalizar</button>
-      </form>
+      <EditGame />
+      <CreateNewGame />
     </>
   );
 };

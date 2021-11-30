@@ -9,10 +9,9 @@ const Login = () => {
 
   const login = async () => {
     try {
-      const url = 'http://localhost:3001';
       const endpoint = '/auth';
 
-      const { token, user } = await requestLogin(url, endpoint, { email, password });
+      const { token, user } = await requestLogin(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
       setIsLogged(true);
