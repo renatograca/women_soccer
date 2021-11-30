@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import TeamOptions from './TeamOption';
+import ClubOption from './ClubOption';
 import Scoreboard from './Scoreboard';
 
 const CreateNewGame = ({
@@ -21,7 +21,7 @@ const CreateNewGame = ({
     <>
       <h1 className="match-settings">Adicionar Partida</h1>
       <form className="match-settings-form">
-        <TeamOptions
+        <ClubOption
           teams={ clubs }
           setTeams={ setClubs }
           homeTeam
@@ -38,7 +38,7 @@ const CreateNewGame = ({
           score={ awayTeamScoreboard }
           setScore={ setAwayTeamScoreboard }
         />
-        <TeamOptions
+        <ClubOption
           teams={ clubs }
           setTeams={ setClubs }
           homeTeam={ false }
