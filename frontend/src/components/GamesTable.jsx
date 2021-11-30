@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { requestData } from '../services/requests';
 import Loading from './Loading';
 
@@ -57,9 +58,25 @@ const GamesTable = () => {
                   {
                     (isAdm)
                       ? (
-                        <button type="button" disabled={ inProgress }>
-                          Editar
-                        </button>
+                        <Link
+                          to="/adm/settings"
+                          state={
+                            { id,
+                              homeClub,
+                              homeTeamGoals,
+                              awayClub,
+                              awayTeamGoals,
+                              inProgress }
+                          }
+                        >
+                          <button
+                            type="button"
+                            disabled={ inProgress }
+                            onClick={ () => localStorage.setItem('game', 'editar') }
+                          >
+                            Editar
+                          </button>
+                        </Link>
                       )
                       : <div>{ (inProgress) ? 'Finalizada' : 'Em andamento' }</div>
                   }

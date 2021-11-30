@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ClubOption = ({ teams, homeTeam }) => (
+const ClubOption = ({ teams, homeTeam, getClub }) => (
   <label htmlFor={ (homeTeam) ? 'home-team-scoreboard' : 'away-team-scoreboard' }>
     { (homeTeam) ? 'Time Mandante' : 'Time Visitante' }
-    <select>
+    <select
+      onClick={ ({ target: { value } }) => {
+        const homeOrAway = (homeTeam) ? 'homeClub' : 'awayClub';
+        getClub(value, homeOrAway);
+      } }
+      defaultValue="selecione"
+    >
       {
         teams.map(({ id, clubName }) => (
           <option key={ id }>{ clubName }</option>
@@ -17,6 +23,7 @@ const ClubOption = ({ teams, homeTeam }) => (
 ClubOption.propTypes = {
   teams: PropTypes.arrayOf(PropTypes.object).isRequired,
   homeTeam: PropTypes.bool.isRequired,
+  getClub: PropTypes.func.isRequired,
 };
 
 export default ClubOption;
