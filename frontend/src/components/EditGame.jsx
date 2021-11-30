@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import TeamOptions from './TeamOption';
+import ClubOption from './ClubOption';
 import Scoreboard from './Scoreboard';
 
 const EditGame = ({
@@ -20,7 +20,7 @@ const EditGame = ({
     <>
       <h1 className="match-settings">Alterar Partida</h1>
       <form className="match-settings-form">
-        <TeamOptions
+        <ClubOption
           teams={ homeTeam }
           homeTeam
           getClub={ getClub }
@@ -38,7 +38,7 @@ const EditGame = ({
           setScore={ setAwayTeamGoals }
           qtyGoal={ awayTeamGoals }
         />
-        <TeamOptions
+        <ClubOption
           teams={ awayTeam }
           homeTeam={ false }
           getClub={ getClub }

@@ -11,8 +11,8 @@ const ClubOption = ({ teams, homeTeam, getClub }) => (
       } }
     >
       {
-        teams.map(({ id, clubName }) => (
-          <option key={ id }>{ clubName }</option>
+        teams.map(({ clubName }, index) => (
+          <option key={ index }>{ clubName }</option>
         ))
       }
     </select>
