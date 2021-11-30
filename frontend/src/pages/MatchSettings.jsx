@@ -7,13 +7,13 @@ import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
   const [clubs, setClubs] = useState([]);
-  // const [homeTeam, setHomeTeam] = useState('');
   const [homeTeamScoreboard, setHomeTeamScoreboard] = useState('0');
-  // const [awayTeam, setAwayTeam] = useState('');
   const [awayTeamScoreboard, setAwayTeamScoreboard] = useState('0');
+  // const [homeTeam, setHomeTeam] = useState('');
+  // const [awayTeam, setAwayTeam] = useState('');
   const [homeClub, setHomeClub] = useState('');
   const [awayClub, setAwayClub] = useState('');
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     const endpoint = '/clubs';
@@ -26,7 +26,6 @@ const MatchSettings = () => {
         .catch((error) => console.log(error));
     }
   });
-
   const getClub = (club, homeOrAway) => {
     const { id } = clubs.find(({ clubName }) => clubName === club);
     if (homeOrAway === 'homeClub') { setHomeClub(id); } else { setAwayClub(id); }
@@ -57,11 +56,35 @@ const MatchSettings = () => {
     /* const { data } = */ await api.patch('/matches', body);
   };
 
+  if (location.state.id) {
+    const { id,
+      homeClub: homeClubState,
+      homeTeamGoals,
+      awayClub: awayClubState,
+      awayTeamGoals,
+      inProgress } = location.state;
+    return (
+      <EditGame
+        setHomeTeamScoreboard={ setHomeTeamScoreboard }
+        setAwayTeamScoreboard={ setAwayTeamScoreboard }
+        homeTeam={ [homeClubState] }
+        awayTeam={ [awayClubState] }
+        getClub={ getClub }
+        createMatch={ createMatch }
+        finishMatch={ finishMatch }
+      />
+    );
+  }
+
   return (
-    <>
-      <EditGame />
-      <CreateNewGame />
-    </>
+    <CreateNewGame
+      setHomeTeamScoreboard={ setHomeTeamScoreboard }
+      setAwayTeamScoreboard={ setAwayTeamScoreboard }
+      clubs={ [homeTeam, awayTeam] }
+      getClub={ getClub }
+      createMatch={ createMatch }
+      finishMatch={ finishMatch }
+    />
   );
 };
 
