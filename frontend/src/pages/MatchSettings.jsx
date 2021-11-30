@@ -41,19 +41,19 @@ const MatchSettings = () => {
     };
     const user = JSON.parse(localStorage.getItem('user')) || { token: '' };
     setToken(user.token);
-    // console.log(body, 'body');
-    // console.log(user.token, 'user');
-    /* const { data } = */ await api.post('/matches', body);
-    // console.log(data, 'meu data');
+    await api.post('/matches', body);
   };
 
+  const updateMatch = async (id, updateGoals) => {
+    await api.patch(`/matches/${id}`, { ...updateGoals });
+  };
   const finishMatch = async (inProgress) => {
     const body = {
       inProgress,
       homeTeam: homeClub,
       awayTeam: awayClub,
     };
-    /* const { data } = */ await api.patch('/matches', body);
+    await api.patch('/matches', body);
   };
 
   if (location.state.id) {
@@ -62,15 +62,18 @@ const MatchSettings = () => {
       homeTeamGoals,
       awayClub: awayClubState,
       awayTeamGoals,
-      inProgress } = location.state;
+    } = location.state;
     return (
       <EditGame
         setHomeTeamScoreboard={ setHomeTeamScoreboard }
         setAwayTeamScoreboard={ setAwayTeamScoreboard }
         homeTeam={ [homeClubState] }
         awayTeam={ [awayClubState] }
+        homeTeamGoals={ homeTeamGoals }
+        awayTeamGoals={ awayTeamGoals }
+        idMatch={ id }
         getClub={ getClub }
-        createMatch={ createMatch }
+        updateMatch={ updateMatch }
         finishMatch={ finishMatch }
       />
     );
