@@ -56,8 +56,7 @@ const MatchSettings = () => {
     await api.patch('/matches', body);
   };
 
-  console.log(location);
-  if (!('state' in location)) {
+  if (location.state) {
     const { id,
       homeClub: homeClubState,
       homeTeamGoals,

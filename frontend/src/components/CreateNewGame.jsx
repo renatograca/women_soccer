@@ -12,12 +12,13 @@ const CreateNewGame = ({
   setHomeTeamScoreboard,
   awayTeamScoreboard,
   setAwayTeamScoreboard,
+  createMatch,
 }) => {
   const notCreated = 'not-created';
   const [inProgress, setInProgress] = useState(notCreated);
   return (
     <>
-      <h1 className="match-settings">Adicionar/Alterar Partida</h1>
+      <h1 className="match-settings">Adicionar Partida</h1>
       <form className="match-settings-form">
         <TeamOptions
           teams={ clubs }
@@ -48,7 +49,7 @@ const CreateNewGame = ({
             setInProgress('In-Progress');
           } }
           type="button"
-          disabled={ (inProgress === notCreated) }
+          disabled={ (inProgress !== notCreated) }
         >
           Salvar
 
@@ -56,7 +57,7 @@ const CreateNewGame = ({
         <button
           onClick={ () => finishMatch(false) }
           type="button"
-          disabled={ (inProgress !== notCreated) }
+          disabled={ (inProgress === notCreated) }
         >
           Finalizar
 
