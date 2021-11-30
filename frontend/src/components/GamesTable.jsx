@@ -74,7 +74,7 @@ const GamesTable = () => {
                             disabled={ inProgress }
                             onClick={ () => localStorage.setItem('game', 'editar') }
                           >
-                            Editar
+                            { (inProgress) ? 'Editar' : 'Finalizada'}
                           </button>
                         </Link>
                       )

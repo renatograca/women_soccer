@@ -6,11 +6,10 @@ const LeaderboardTable = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:3001';
     const endpoint = '/result';
 
     if (leaderboard.length === 0) {
-      requestData(url, endpoint)
+      requestData(endpoint)
         .then((response) => setLeaderboard(response))
         .catch((error) => console.log(error));
     }

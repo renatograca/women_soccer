@@ -9,7 +9,6 @@ const ClubOption = ({ teams, homeTeam, getClub }) => (
         const homeOrAway = (homeTeam) ? 'homeClub' : 'awayClub';
         getClub(value, homeOrAway);
       } }
-      defaultValue="selecione"
     >
       {
         teams.map(({ id, clubName }) => (
