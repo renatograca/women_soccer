@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import CreateNewGame from '../components/CreateNewGame';
 import EditGame from '../components/EditGame';
-// import { useLocation } from 'react-router-dom';
 import api, { requestData, setToken } from '../services/requests';
 import '../styles/pages/matchSettings.css';
 
@@ -56,7 +56,7 @@ const MatchSettings = () => {
     await api.patch('/matches', body);
   };
 
-  if (location.state.id) {
+  if (!('id' in location.states)) {
     const { id,
       homeClub: homeClubState,
       homeTeamGoals,
