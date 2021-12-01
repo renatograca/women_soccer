@@ -1,0 +1,39 @@
+### Create User
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+  "username": "paulo",
+  "role": "user",
+  "email": "bovolin@gmail.com",
+  "password": "123456"
+}
+
+### Create Match
+POST http://localhost:3001/matches
+Content-Type: application/json
+
+{
+  "homeTeam": 10,
+  "homeTeamGoals": 4,
+  "awayTeam": 15,
+  "awayTeamGoals": 0,
+  "isMatchOver": true
+}
+
+### Authenticate
+POST http://localhost:3001/auth
+Content-Type: application/json
+
+{
+  "email": "tiago@gmail.com",
+  "password": "123456"
+}
+
+### Get all players
+GET http://localhost:3001/players
+Content-Type: application/json
+
+### Get all matches
+GET http://localhost:3001/matches
+Content-Type: application/json
