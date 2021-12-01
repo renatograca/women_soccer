@@ -10,7 +10,7 @@ services:
       - db
   backend:
     build: ./backend
-    restart: 'always'
+    restart: 'unless-stopped'
     links:
       - db
     depends_on:
@@ -35,6 +35,8 @@ services:
     restart: 'always'
     networks:
       - db_back
+    cap_add:
+      - SYS_NICE
 networks:
   db_back:
     driver: 'bridge'
