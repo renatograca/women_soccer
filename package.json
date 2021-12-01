@@ -4,9 +4,6 @@
   "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
   "main": "index.js",
   "scripts": {
-    "front":"./scripts/dockerFront.sh",
-    "back":"./scripts/dockerBack.sh",
-    "container":"./scripts/removeContainer.sh"
   },
   "repository": {
     "type": "git",
