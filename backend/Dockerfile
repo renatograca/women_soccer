@@ -10,6 +10,4 @@ RUN npm install
 
 EXPOSE 3001
 
-ENTRYPOINT [ "npm" ]
-
-CMD [ "start" ]
+CMD [ "sh", "-c", "npm run db:reset ; npm start" ]

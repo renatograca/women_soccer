@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "front":"./scripts/dockerFront.sh",
-    "back":"./scripts/dockerBack.sh"
+    "back":"./scripts/dockerBack.sh",
+    "container":"./scripts/removeContainer.sh"
   },
   "repository": {
     "type": "git",
