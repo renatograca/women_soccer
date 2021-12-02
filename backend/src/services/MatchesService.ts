@@ -1,5 +1,4 @@
 import { Op } from 'sequelize';
-import MatchMiddleware from '../middlewares/MatchMiddleware';
 import Matches from '../database/models/MatchesModel';
 import Clubs from '../database/models/ClubsModel';
 
@@ -52,9 +51,6 @@ class MatchesService {
   }
 
   async updateMatch(id: number, homeTeamGoals: number, awayTeamGoals: number) {
-    const validateQuantityGoals = MatchMiddleware
-      .validateQuantityGoals(homeTeamGoals, awayTeamGoals);
-    if (validateQuantityGoals) { return false; }
     const matches = await Matches.update(
       {
         homeTeamGoals,

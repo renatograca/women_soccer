@@ -18,11 +18,12 @@ class MatchMiddleware {
     return next();
   }
 
-  validateQuantityGoals(homeTeamGoals: number, awayTeamGoals: number) {
+  validateQuantityGoals(req: Req, res: Res, next: Next) {
+    const { homeTeamGoals, awayTeamGoals } = req.body;
     if (homeTeamGoals < 0 || awayTeamGoals < 0) {
-      return true;
+      return res.status(401).json({ message: 'invalid quantity' });
     }
-    return false;
+    return next();
   }
 
   async validateTeam(req: Req, res: Res, next: Next) {
