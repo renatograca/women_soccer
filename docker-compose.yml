@@ -10,7 +10,7 @@ services:
       - db
   backend:
     build: ./backend
-    restart: 'unless-stopped'
+    restart: 'always'
     links:
       - db
     depends_on:
