@@ -1,6 +1,6 @@
-import app from './app';
-import 'dotenv/config';
+// import app from './app';
+// import 'dotenv/config';
 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => console.log(`I am here, friend in port ${PORT}`));
+// app.listen(PORT, () => console.log(`I am here, friend in port ${PORT}`));

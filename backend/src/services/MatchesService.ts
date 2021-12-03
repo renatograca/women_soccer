@@ -77,11 +77,8 @@ class MatchesService {
         { inProgress },
         { where: { [Op.and]: [{ homeTeam }, { awayTeam }] } },
       );
-      console.log(match);
-
       return match;
     } catch (error) {
-      console.log(error);
       return error;
     }
   }

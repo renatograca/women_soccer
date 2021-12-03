@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import Routes from './routes/Routes';
+import 'dotenv/config';
 
 class App {
   public app: express.Application;
@@ -11,6 +12,7 @@ class App {
     this.app = express();
     this.config();
     this.routePrv.routes(this.app);
+    this.start();
   }
 
   private config():void {
@@ -22,6 +24,11 @@ class App {
     });
     this.app.use(express.json());
     this.app.use(cors());
+  }
+
+  private start():void {
+    const PORT = process.env.PORT || 3001;
+    this.app.listen(PORT, () => console.log(`I am here, friend in port ${PORT}`));
   }
 }
 
