@@ -9,7 +9,7 @@ const leaderboard = [
     goalsFavor: 44,
     goalsOwn: 13,
     goalsBalance: 31,
-    efficiency: 84.4
+    efficiency: 84.4,
   },
   {
     name: 'Palmeiras',
@@ -57,7 +57,7 @@ const leaderboard = [
     goalsFavor: 21,
     goalsOwn: 15,
     goalsBalance: 6,
-    efficiency: 60
+    efficiency: 60,
   },
   {
     name: 'Internacional',
