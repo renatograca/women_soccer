@@ -63,13 +63,13 @@ class MatchesService {
     return matches;
   }
 
-  async matchesInProgress(inProgress: boolean) {
-    const matches = await Matches.findAll({
-      raw: true,
-      where: { inProgress },
-    });
-    return matches;
-  }
+  // async matchesInProgress(inProgress: boolean) {
+  //   const matches = await Matches.findAll({
+  //     raw: true,
+  //     where: { inProgress },
+  //   });
+  //   return matches;
+  // }
 
   async finishMatch(inProgress: boolean, { homeTeam, awayTeam }: any) {
     try {

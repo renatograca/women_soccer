@@ -22,7 +22,7 @@ class MatchesController {
         inProgress,
       );
 
-      return res.status(200).json(match);
+      return res.status(201).json(match);
     } catch (error) {
       return error;
     }
@@ -44,11 +44,11 @@ class MatchesController {
     return res.status(200).json(matches);
   }
 
-  public static async matchesInProgress(req: Request, res: Response) {
-    const { inProgress } = req.body;
-    const matches = await MatchesService.matchesInProgress(inProgress);
-    return res.status(200).json(matches);
-  }
+  // public static async matchesInProgress(req: Request, res: Response) {
+  //   const { inProgress } = req.body;
+  //   const matches = await MatchesService.matchesInProgress(inProgress);
+  //   return res.status(200).json(matches);
+  // }
 
   public static async updateMatch(req: Request, res: Response) {
     const { homeTeamGoals, awayTeamGoals } = req.body;
@@ -60,7 +60,6 @@ class MatchesController {
 
   public static async finishMatch(req: Request, res: Response) {
     const { inProgress, homeTeam, awayTeam } = req.body;
-    console.log(req.body, 'finish body');
 
     const match = await MatchesService.finishMatch(inProgress, { homeTeam, awayTeam });
     if (!match) { return res.status(401).json({ message: 'Partida já finalizada' }); }
