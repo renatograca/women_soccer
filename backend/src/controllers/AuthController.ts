@@ -1,13 +1,12 @@
 import { Request, Response } from 'express';
 import { compare } from 'bcryptjs';
 import Token from '../middlewares/Token';
-
-import UserService from '../services/UserService';
+// import UserModel from '../database/models/UsersModel';
 
 class AuthController {
   public static async authenticate(req: Request, res: Response) {
     const { email, password } = req.body;
-    const user = await UserService.getOneUser(email);
+    const user = await Token.getUser(email);
 
     if (!user) {
       return res.status(401).json('User does not exists!');
@@ -19,16 +18,25 @@ class AuthController {
       return res.status(401).json('Invalid password!');
     }
 
-    delete user.password;
+    user.password = '';
 
-    const token = Token.createToken({
+    const token = await Token.createToken({
       ...user,
     });
 
-    return res.json({
+    return res.status(200).json({
       user,
       token,
     });
+  }
+
+  public static validate(req: Request, res: Response) {
+    const token = req.headers.authorization || 'vazio';
+
+    const { role }: any = Token.roleToken(token);
+
+    if (role !== 'admin') { return res.status(401).json({ message: 'acesso não permitido' }); }
+    return res.status(200).json(role);
   }
 }
 

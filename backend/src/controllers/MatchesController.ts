@@ -5,27 +5,27 @@ import ResultService from '../services/ResultService';
 
 class MatchesController {
   public static async createNewMatch(req: Request, res: Response) {
-    try {
-      const {
-        homeTeam,
-        homeTeamGoals,
-        awayTeam,
-        awayTeamGoals,
-        inProgress,
-      } = req.body;
+    // try {
+    const {
+      homeTeam,
+      homeTeamGoals,
+      awayTeam,
+      awayTeamGoals,
+      inProgress,
+    } = req.body;
 
-      const match = await MatchesService.createMatch(
-        homeTeam,
-        homeTeamGoals,
-        awayTeam,
-        awayTeamGoals,
-        inProgress,
-      );
+    const match = await MatchesService.createMatch(
+      homeTeam,
+      homeTeamGoals,
+      awayTeam,
+      awayTeamGoals,
+      inProgress,
+    );
 
-      return res.status(201).json(match);
-    } catch (error) {
-      return error;
-    }
+    return res.status(201).json(match);
+    // } catch (error) {
+    //   return error;
+    // }
   }
 
   public static async getAllMatches(req: Request, res: Response) {

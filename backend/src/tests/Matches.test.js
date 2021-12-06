@@ -1,10 +1,10 @@
-const { stub } = require('sinon');
+const { stub, resetHistory } = require('sinon');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 // const proxyquire = require('proxyquire');
 // const { makeMockModels } = require('sequelize-test-helpers');
 const {
-  describe, beforeEach, it, afterEach, before,
+  describe, beforeEach, it, afterEach, before, after,
 } = require('mocha');
 
 const { expect } = chai;
@@ -24,7 +24,7 @@ describe('Requisições a rota de matches', () => {
   const getAllMatches = stub(MatchesModel, 'findAll');
   const getOneMatch = stub(MatchesModel, 'findOne');
   const createMatch = stub(MatchesModel, 'create');
-  const updateMatch = stub(MatchesModel, 'update');
+  // const updateMatch = stub(MatchesModel, 'update');
   const matches = [
     {
       id: 1,
@@ -70,7 +70,7 @@ describe('Requisições a rota de matches', () => {
   beforeEach(async () => {
     getAllMatches.resolves(matches);
     getOneMatch.resolves(matches[0]);
-    updateMatch.resolves();
+    // updateMatch.resolves();
     // Matches.create.resolves({
     //   id: 42,
     //   homeTeam: 3,
@@ -95,8 +95,10 @@ describe('Requisições a rota de matches', () => {
     getAllMatches.restore();
     getOneMatch.restore();
     createMatch.restore();
-    updateMatch.restore();
+    // updateMatch.restore();
   });
+  // after(() => user.restore());
+  after(resetHistory);
 
   it('GET /matches', async () => {
     const result = await chai.request(app).get('/matches');
@@ -136,6 +138,7 @@ describe('Requisições a rota de matches', () => {
       });
 
     expect(result.status).to.be.equals(401);
+    expect(result.body).to.be.equals('There is no team with such id!');
   });
   it('GET /result', async () => {
     const result = await chai.request(app).get('/result');
@@ -146,16 +149,19 @@ describe('Requisições a rota de matches', () => {
       .send({ homeTeamGoals: 3, awayTeamGoals: 3 });
     expect(result.status).to.be.equals(200);
   });
-  // it('PATCH /matches/:id --
-  // Retornar um error ao atualiza a quantidade de goals com quantidade invalida',
-  // async () => {
-  //   const result = await chai.request(app).get('/matches/42')
-  //     .send({ homeTeamGoals: '-2', awayTeamGoals: -1 });
-  //   expect(result.status).to.be.equals(401);
-  // });
+  // it(
+  //   'PATCH /matches/:id --
+  //  Retornar um error ao atualiza a quantidade de goals com quantidade invalida',
+  //   async () => {
+  //     const result = await chai.request(app).get('/matches/42')
+  //       .send({ homeTeamGoals: -2, awayTeamGoals: -1 });
+  //     expect(result.status).to.be.equals(401);
+  //   },
+  // );
   it('PATCH /matches/:id -- Finaliza uma partida em andamento', async () => {
     const result = await chai.request(app).get('/matches/42')
       .send({ inProgress: false, homeTeam: 1, awayTeam: 3 });
     expect(result.status).to.be.equals(200);
+    expect(result.body).to.be.null;
   });
 });

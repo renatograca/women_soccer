@@ -1,6 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
+import UserModel from '../database/models/UsersModel';
 
 class Token {
   secret!: string;
@@ -33,12 +34,17 @@ class Token {
 
   public roleToken = (token: string) => {
     try {
-      const decoded = jwt.verify(token, this.secret);
+      const { dataValues }: any = jwt.verify(token, this.secret) || { dataValues: '' };
 
-      return decoded;
+      return dataValues;
     } catch (error) {
       return error;
     }
   };
+
+  public async getUser(email:string) {
+    const user = await UserModel.findOne({ where: { email } });
+    return user;
+  }
 }
 export default new Token();
