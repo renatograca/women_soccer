@@ -22,21 +22,21 @@ const LeaderboardTable = () => {
   return (
     <div>
       <table>
-        <thead>
+        <thead data-testid="leaderboardTable-header">
           <tr>
-            <th>Classificação</th>
-            <th>P</th>
-            <th>J</th>
-            <th>V</th>
-            <th>E</th>
-            <th>D</th>
-            <th>GP</th>
-            <th>GC</th>
-            <th>SG</th>
-            <th>%</th>
+            <th data-testid="classification">Classificação</th>
+            <th data-testid="total-points">P</th>
+            <th data-testid="total-games">J</th>
+            <th data-testid="total-victories">V</th>
+            <th data-testid="total-draws">E</th>
+            <th data-testid="total-looses">D</th>
+            <th data-testid="goals-favor">GP</th>
+            <th data-testid="goals-own">GC</th>
+            <th data-testid="goals-balance">SG</th>
+            <th data-testid="efficiency">%</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid="leaderboardTable-body">
           {
             leaderboard.map(({
               name,
@@ -51,7 +51,7 @@ const LeaderboardTable = () => {
               efficiency,
             },
             index) => (
-              <tr key={ name }>
+              <tr key={ name } data-testid={ `${index + 1}-leaderbord-position` }>
                 <td>{`${index + 1} ${name}`}</td>
                 <td>{ totalPoints }</td>
                 <td>{ totalGames }</td>
