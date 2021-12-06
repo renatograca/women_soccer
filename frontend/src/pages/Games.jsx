@@ -10,6 +10,7 @@ const Games = () => (
     </div>
     <div>
       <Link to="/adm/settings">Adicionar Partida</Link>
+      <Link to="/leaderboard">Ver Classificação</Link>
     </div>
     <h1>Tabela de Jogos</h1>
     <GamesTable />
