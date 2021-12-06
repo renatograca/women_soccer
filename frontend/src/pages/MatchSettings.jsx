@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import CreateNewGame from '../components/CreateNewGame';
 import EditGame from '../components/EditGame';
 import Loading from '../components/Loading';
@@ -91,28 +91,36 @@ const MatchSettings = () => {
       awayTeamGoals,
     } = location.state;
     return (
-      <EditGame
-        homeTeam={ [homeClubState] }
-        awayTeam={ [awayClubState] }
-        homeTeamGoals={ homeTeamGoals }
-        awayTeamGoals={ awayTeamGoals }
-        idMatch={ id }
-        updateMatch={ updateMatch }
-        finishMatch={ finishMatch }
-        getClub={ getClub }
-      />
+      <>
+        <EditGame
+          homeTeam={ [homeClubState] }
+          awayTeam={ [awayClubState] }
+          homeTeamGoals={ homeTeamGoals }
+          awayTeamGoals={ awayTeamGoals }
+          idMatch={ id }
+          updateMatch={ updateMatch }
+          finishMatch={ finishMatch }
+          getClub={ getClub }
+        />
+        <Link to="/games">Ver Jogos</Link>
+        <Link to="/leaderboard">Ver Classificação</Link>
+      </>
     );
   }
 
   return (
-    <CreateNewGame
-      setHomeTeamScoreboard={ setHomeTeamScoreboard }
-      setAwayTeamScoreboard={ setAwayTeamScoreboard }
-      clubs={ clubs }
-      getClub={ getClub }
-      createMatch={ createMatch }
-      finishMatch={ finishMatch }
-    />
+    <>
+      <CreateNewGame
+        setHomeTeamScoreboard={ setHomeTeamScoreboard }
+        setAwayTeamScoreboard={ setAwayTeamScoreboard }
+        clubs={ clubs }
+        getClub={ getClub }
+        createMatch={ createMatch }
+        finishMatch={ finishMatch }
+      />
+      <Link to="/games">Ver Jogos</Link>
+      <Link to="/leaderboard">Ver Classificação</Link>
+    </>
   );
 };
 
