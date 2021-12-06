@@ -1,0 +1,19 @@
+{
+  "name": "women_soccer",
+  "version": "1.0.0",
+  "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenatoGSouza/women_soccer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenatoGSouza/women_soccer/issues"
+  },
+  "homepage": "https://github.com/RenatoGSouza/women_soccer#readme"
+}
