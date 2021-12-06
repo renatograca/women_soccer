@@ -1,10 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import LoginBtn from '../components/LoginBtn';
 import GamesTable from '../components/GamesTable';
 
 const Games = () => (
   <>
-    <LoginBtn />
+    <div>
+      <LoginBtn />
+    </div>
+    <div>
+      <Link to="/adm/settings">Adicionar Partida</Link>
+    </div>
     <h1>Tabela de Jogos</h1>
     <GamesTable />
   </>
