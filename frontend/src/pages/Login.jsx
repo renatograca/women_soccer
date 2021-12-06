@@ -20,7 +20,7 @@ const Login = () => {
     }
   };
 
-  if (isLogged) return <Navigate to="/adm/settings" />;
+  if (isLogged) return <Navigate to="/games" />;
 
   return (
     <form>
