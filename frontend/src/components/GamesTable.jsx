@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { requestData } from '../services/requests';
 import Loading from './Loading';
 
-const GamesTable = () => {
+const GamesTable = ({ isFiltered }) => {
   const [games, setGames] = useState([]);
+  const [gamesFiltered, setGamesFiltered] = useState([]);
   const [isAdm, setIsAdm] = useState(false);
 
   useEffect(() => {
@@ -12,7 +14,10 @@ const GamesTable = () => {
 
     if (!games.length) {
       requestData(endpoint)
-        .then((response) => setGames(response))
+        .then((response) => {
+          setGames(response);
+          setGamesFiltered(response.filter(({ inProgress }) => inProgress));
+        })
         .catch((error) => console.log(error));
     }
 
@@ -39,7 +44,8 @@ const GamesTable = () => {
         </thead>
         <tbody>
           {
-            games.sort((a, b) => b.inProgress - a.inProgress)
+            (isFiltered ? games : gamesFiltered)
+              .sort((a, b) => b.inProgress - a.inProgress)
               .map(({
                 id,
                 homeClub,
@@ -88,6 +94,10 @@ const GamesTable = () => {
       </table>
     </div>
   );
+};
+
+GamesTable.propTypes = {
+  isFiltered: PropTypes.bool.isRequired,
 };
 
 export default GamesTable;
