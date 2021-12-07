@@ -51,17 +51,37 @@ const LeaderboardTable = () => {
               efficiency,
             },
             index) => (
-              <tr key={ name } data-testid={ `${index + 1}-leaderbord-position` }>
-                <td>{`${index + 1} ${name}`}</td>
-                <td>{ totalPoints }</td>
-                <td>{ totalGames }</td>
-                <td>{ totalVictories }</td>
-                <td>{ totalDraws }</td>
-                <td>{ totalLooses }</td>
-                <td>{ goalsFavor }</td>
-                <td>{ goalsOwn }</td>
-                <td>{ goalsBalance }</td>
-                <td>{ efficiency }</td>
+              <tr key={ name }>
+                <td data-testid={ `${index + 1}-club-name` }>
+                  {`${index + 1} ${name}`}
+                </td>
+                <td data-testid={ `${index + 1}-total-points` }>
+                  { totalPoints }
+                </td>
+                <td data-testid={ `${index + 1}-total-games` }>
+                  { totalGames }
+                </td>
+                <td data-testid={ `${index + 1}-total-victories` }>
+                  { totalVictories }
+                </td>
+                <td data-testid={ `${index + 1}-total-draws` }>
+                  { totalDraws }
+                </td>
+                <td data-testid={ `${index + 1}-total-looses` }>
+                  { totalLooses }
+                </td>
+                <td data-testid={ `${index + 1}-goals-favor` }>
+                  { goalsFavor }
+                </td>
+                <td data-testid={ `${index + 1}-goals-own` }>
+                  { goalsOwn }
+                </td>
+                <td data-testid={ `${index + 1}-goals-balance` }>
+                  { goalsBalance }
+                </td>
+                <td data-testid={ `${index + 1}-efficiency` }>
+                  { efficiency }
+                </td>
               </tr>
             ))
           }
