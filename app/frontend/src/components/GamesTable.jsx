@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import { requestData } from '../services/requests';
 import Loading from './Loading';
 
-const GamesTable = ({ isFiltered }) => {
+const GamesTable = ({ isFiltered, isAdm }) => {
   const [games, setGames] = useState([]);
   const [gamesFiltered, setGamesFiltered] = useState([]);
-  const [isAdm, setIsAdm] = useState(false);
 
   useEffect(() => {
     const endpoint = '/matches';
@@ -20,9 +19,6 @@ const GamesTable = ({ isFiltered }) => {
         })
         .catch((error) => console.log(error));
     }
-
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    if (user.role === 'adm') { setIsAdm(true); }
   }, [games]);
 
   if (!games.length) {
@@ -98,6 +94,7 @@ const GamesTable = ({ isFiltered }) => {
 
 GamesTable.propTypes = {
   isFiltered: PropTypes.bool.isRequired,
+  isAdm: PropTypes.bool.isRequired,
 };
 
 export default GamesTable;
