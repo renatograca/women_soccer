@@ -19,7 +19,8 @@
   "homepage": "https://github.com/RenatoGSouza/women_soccer#readme",
   "dependencies": {
     "jest": "^27.4.3",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-beta.1"
   },
   "devDependencies": {
     "eslint": "^8.4.1",
