@@ -11,8 +11,7 @@
     "local": "ts-node ./src/app.ts",
     "dev": "npm run build && NODE_ENV=development node build/server.js",
     "stage": "npm run build && NODE_ENV=staging node build/server.js",
-    "start": "ts-node-dev ./src/app.ts",
-    "db:reset": "./scripts/reset-db-dev.sh"
+    "start": "ts-node-dev ./src/app.ts"
   },
   "keywords": [],
   "author": "",
