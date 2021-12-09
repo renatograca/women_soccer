@@ -9,7 +9,7 @@ const Games = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user')) || {};
-    if (user.role === 'adm') { setIsAdm(true); }
+    if (user.role === 'admin') { setIsAdm(true); }
   }, []);
 
   return (
