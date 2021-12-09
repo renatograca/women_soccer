@@ -4,7 +4,7 @@
   "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/RenatoGSouza/women_soccer#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "jest": "^27.4.3",
+    "jest-puppeteer": "^6.0.2",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
