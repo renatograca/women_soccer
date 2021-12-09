@@ -1,8 +1,7 @@
 module.exports = {
-  preset: 'jest-puppeteer',
   rootDir: './__tests__',
   // testEnvironment: '../config/test_env.js',
-  // testSequencer: '../config/sequencer.js',
+  testSequencer: './config/sequencer.js',
   // setupFilesAfterEnv: [
   //   '../config/setupTest.js',
   //   '../config/matchers/other',
@@ -10,5 +9,5 @@ module.exports = {
   //   '../config/matchers/puppeteer',
   // ],
   testRegex: './*\\.test\\.js$',
-  testTimeout: 2000,
+  testTimeout: 180000,
 };
